@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="max_lines_character_name">1</integer>
+    <integer name="max_length_character_name">30</integer>
+    <integer name="max_length_character_breed">20</integer>
+    <integer name="max_lines_character_breed">1</integer>
+    <integer name="max_lines_email">1</integer>
+    <integer name="max_lines_add_comment">5</integer>
+    <integer name="max_lines_weapon_damage">3</integer>
+    <integer name="max_lines_item_desc">50</integer>
+    <integer name="max_lines_skill_damage">3</integer>
+    <integer name="max_lines_skill_cooldown">1</integer>
+    <integer name="max_lines_adapter_note_desc">7</integer>
+    <integer name="max_length_attribute_value">4</integer>
+    <integer name="max_length_xp_value">6</integer>
+    <integer name="max_length_level_value">2</integer>
+    <integer name="max_ems_attr_name">8</integer>
+    <integer name="max_length_damage">9</integer>
+
+
+    <integer name="min_lines_item_desc">4</integer>
+</resources>

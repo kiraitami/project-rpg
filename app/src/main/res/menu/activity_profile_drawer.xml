@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_attributes"
+            android:icon="@drawable/ic_charactersheet"
+            android:title="@string/attributes" />
+        <item
+            android:id="@+id/nav_xp"
+            android:icon="@drawable/ic_sharpcrown"
+            android:title="@string/xp" />
+
+        <item
+            android:id="@+id/nav_tavern"
+            android:icon="@drawable/ic_goal"
+            android:title="@string/tavern" />
+
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_notes"
+            android:title="@string/notes" />
+
+    </group>
+
+    <item android:title="@string/inventory">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_items"
+                    android:icon="@drawable/ic_tourism"
+                    android:title="@string/m_items" />
+                <item
+                    android:id="@+id/nav_weapons"
+                    android:icon="@drawable/ic_katana"
+                    android:title="@string/weapons" />
+            </group>
+        </menu>
+    </item>
+
+
+    <item android:title="@string/powers">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_skills"
+                    android:icon="@drawable/ic_skill"
+                    android:title="@string/skill" />
+
+                <item
+                    android:id="@+id/nav_magic"
+                    android:icon="@drawable/ic_spellbook"
+                    android:title="@string/maho" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/account">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_change_character"
+                    android:icon="@drawable/ic_people_black_24dp"
+                    android:title="@string/my_characters"/>
+                <item
+                    android:id="@+id/nav_log_out"
+                    android:icon="@drawable/ic_log_out"
+                    android:title="@string/exit" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

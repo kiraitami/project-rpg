@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "652283229975",
+    "firebase_url": "https://app-rpg-644a6.firebaseio.com",
+    "project_id": "app-rpg-644a6",
+    "storage_bucket": "app-rpg-644a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652283229975:android:384816904e9c0f08d12952",
+        "android_client_info": {
+          "package_name": "com.example.apprpg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652283229975-68lfno4fgd39bofqt4dq3ov8i7i212re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apprpg",
+            "certificate_hash": "5a201c5a9aa562f758e8675cfeb93996e1ddfef0"
+          }
+        },
+        {
+          "client_id": "652283229975-5lgm3gm8bds2v6eeskkedsj2h75494qu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHkCuEhnoPKg-v3PlLg5WiXUCk7lD7QCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652283229975-5lgm3gm8bds2v6eeskkedsj2h75494qu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="16dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:text="@string/dialog_hint_damage_title"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="22sp" />
+
+            <ImageButton
+                android:id="@+id/dmg_calc_btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/curved_shape"
+                android:backgroundTint="#757575"
+                android:elevation="5dp"
+                android:padding="4dp"
+                android:layout_margin="4dp"
+                app:srcCompat="@drawable/ic_close_x" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/dmg_calc_dialog_damage"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/dialog_hint_damage"
+            android:inputType="number"
+            android:maxLength="@integer/max_length_damage"
+          />
+
+        <EditText
+            android:id="@+id/dmg_calc_dialog_armor"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/dialog_hint_armor"
+            android:inputType="number"
+            android:maxLength="16"
+            />
+
+        <EditText
+            android:id="@+id/dmg_calc_dialog_mr"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/dialog_hint_mr"
+            android:inputType="number"
+            android:maxLength="@integer/max_length_damage"
+            />
+
+        <EditText
+            android:id="@+id/dmg_calc_dialog_const"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/dialog_hint_const"
+            android:inputType="number"
+            android:maxLength="@integer/max_length_damage"
+             />
+
+        <EditText
+            android:id="@+id/dmg_calc_dialog_modfier"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/dialog_hint_modfier"
+            android:inputType="numberSigned"
+            android:maxLength="@integer/max_length_damage"
+            />
+
+
+        <CheckBox
+            android:id="@+id/dmg_calc_dialog_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/dialog_checkbox_modfier" />
+
+        <TextView
+            android:id="@+id/dmg_calc_dialog_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <Button
+                android:id="@+id/dmg_calc_btn_magic"
+                style="@style/BaseDialogButton"
+                android:backgroundTint="#00BCD4"
+                android:text="@string/dialog_btn_magic"
+                />
+
+            <Button
+                android:id="@+id/dmg_calc_btn_hybrid"
+                style="@style/BaseDialogButton"
+                android:backgroundTint="#3949AB"
+                android:text="@string/dialog_btn_hybrid"
+                />
+
+            <Button
+                android:id="@+id/dmg_calc_btn_physical"
+                style="@style/BaseDialogButton"
+                android:backgroundTint="#00ACC1"
+                android:text="@string/dialog_btn_physical"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

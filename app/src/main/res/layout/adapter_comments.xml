@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_picture_comment"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:src="#000202" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/character_name_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Character Name"
+                    android:textAlignment="textStart"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/player_name_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Player Name"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <com.like.LikeButton
+                android:id="@+id/button_like_comment"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="0"
+                app:icon_size="22dp"
+                app:icon_type="heart"
+                app:like_drawable="@drawable/ic_favorite"
+                app:unlike_drawable="@drawable/ic_favorite_border" />
+
+            <TextView
+                android:id="@+id/tv_likes_count_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:textSize="16sp" />
+
+            <ImageButton
+                android:id="@+id/delete_comment"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_delete_black"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="@integer/max_lines_add_comment"
+            android:textSize="16sp"
+            android:text="@string/description_test"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/date_comment"
+            android:text="@string/date_post_pattern"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="textEnd"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

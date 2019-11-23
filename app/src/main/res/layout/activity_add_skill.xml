@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.apprpg.ui.activities.AddSkillActivity"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppThemeTranslucentStatusBar">
+
+    <ImageView
+        android:id="@+id/bg_fade_add_skill"
+        android:src="@android:color/black"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_05" />
+
+    <ScrollView
+        android:alpha="0.96"
+        android:id="@+id/linear_layout_add_skill"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="200dp"
+        android:background="@android:color/white"
+        android:elevation="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            >
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="300dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:paddingBottom="40dp"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/input_skill_name"
+                        style="@style/BaseCreateEditTextTheme"
+                        android:hint="@string/hint_skill_name"
+                        />
+
+                    <EditText
+                        android:id="@+id/input_skill_desc"
+                        android:hint="@string/hint_skill_description"
+                        style="@style/ItemDescriptionEditText"/>
+
+                    <EditText
+                        android:id="@+id/input_skill_damage"
+                        style="@style/BaseCreateEditTextTheme"
+                        android:hint="@string/hint_skill_damage"
+                        android:inputType="textMultiLine"
+                        android:maxLines="@integer/max_lines_skill_damage"
+                        />
+
+                    <EditText
+                        android:id="@+id/input_skill_cost"
+                        style="@style/BaseCreateEditTextTheme"
+                        android:hint="@string/hint_skill_cost"
+                        android:inputType="textMultiLine"
+                        android:maxLines="@integer/max_lines_skill_damage"
+                        />
+
+                    <EditText
+                        android:id="@+id/input_skill_cooldown"
+                        style="@style/BaseCreateEditTextTheme"
+                        android:hint="@string/hint_skill_cooldown"
+                        android:inputType="textMultiLine"
+                        />
+
+                    <EditText
+                        android:id="@+id/input_skill_price"
+                        style="@style/BaseCreateEditTextTheme"
+                        android:hint="@string/hint_skill_price"
+                        android:inputType="number|textPersonName"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar_add_skill"
+                        android:layout_gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="24dp"
+                        android:visibility="gone" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_skill"
+                        style="@style/BaseCreateButton" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

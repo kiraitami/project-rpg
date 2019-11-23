@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="dice_icons">
+        <item>@drawable/ic_d4white</item>
+        <item>@drawable/ic_d6white</item>
+        <item>@drawable/ic_d8white</item>
+        <item>@drawable/ic_d12white</item>
+        <item>@drawable/ic_d20white</item>
+
+    </array>
+    <array name="dice_colors">
+        <item>@android:color/black</item>
+        <item>@android:color/black</item>
+        <item>@android:color/black</item>
+        <item>@android:color/black</item>
+        <item>@android:color/black</item>
+    </array>
+</resources>

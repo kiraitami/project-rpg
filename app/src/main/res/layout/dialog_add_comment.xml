@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="16dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input_comment_dialog"
+            style="@style/BaseDialogEditTExt"
+            android:background="@drawable/input_bio_curved_shape"
+            android:backgroundTint="#E9F3F3F3"
+            android:hint="@string/hint_type_a_comment"
+            android:inputType="textMultiLine"
+            android:gravity="start|top"
+            android:minLines="2"
+            android:maxLines="@integer/max_lines_add_comment" />
+
+        <Button
+            android:id="@+id/button_comment_dialog"
+            style="@style/BaseDialogButton"
+            android:layout_width="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#09C2DA"
+            android:text="@string/btn_comment" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

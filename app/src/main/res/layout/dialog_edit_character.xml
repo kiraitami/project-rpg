@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="16dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/edit_character_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/dialog_edit_char_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/edit_character_dialog_name"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:hint="@string/dialog_edit_char_hint_name"
+            android:inputType="textPersonName"
+            android:maxLength="@integer/max_length_character_name"
+            />
+
+        <EditText
+            android:id="@+id/edit_character_dialog_breed"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:hint="@string/dialog_edit_char_hint_breed"
+            android:inputType="textPersonName"
+            android:maxLength="@integer/max_length_character_breed"
+            />
+
+        <EditText
+            android:id="@+id/edit_character_dialog_classe"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:hint="@string/dialog_edit_char_hint_classe"
+            android:inputType="textPersonName"
+            android:maxLength="@integer/max_length_character_breed"
+            />
+
+        <ProgressBar
+            android:id="@+id/edit_character_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:indeterminate="true"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <Button
+                android:id="@+id/edit_character_dialog_negative"
+                android:backgroundTint="#BEFF0048"
+                android:text="@string/alert_add_attr_btn_cancel"
+                style="@style/BaseDialogButton"
+                />
+
+            <Button
+                android:id="@+id/edit_character_dialog_positive"
+                android:backgroundTint="#09C2DA"
+                android:text="@string/alert_add_attr_btn_confirm"
+                style="@style/BaseDialogButton" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

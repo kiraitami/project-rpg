@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.apprpg.ui.activities.AddCharacterActivity"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppThemeTranslucentStatusBar"
+    >
+
+    <ImageView
+        android:id="@+id/bg_fade_add_character"
+        android:src="@android:color/black"
+        android:visibility="gone"
+        android:elevation="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/bg_add_weapon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_boat" />
+
+    <ScrollView
+        android:alpha="0.96"
+        android:id="@+id/scroll_layout_add_character"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="400dp"
+        android:background="@android:color/white"
+        android:elevation="5dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:srcCompat="@android:color/white" >
+
+
+        <LinearLayout
+            android:id="@+id/linear_layout_content_add_character"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:elevation="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="visible"
+            >
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/character_profile_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/ic_account_circle"
+                app:civ_border_color="@android:color/black"
+                app:civ_border_width="0dp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_character_name_l"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_logins_inputs">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_character_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/character_name"
+                    android:inputType="textPersonName"
+                    android:maxLength="@integer/max_length_character_name"
+                    android:maxLines="@integer/max_lines_character_name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_character_breed_l"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_logins_inputs">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_character_breed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/character_breed"
+                    android:inputType="textPersonName"
+                    android:maxLength="@integer/max_length_character_breed"
+                    android:maxLines="@integer/max_lines_character_breed" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_character_classe_l"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_logins_inputs">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_character_classe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/character_classe"
+                    android:inputType="textPersonName"
+                    android:maxLength="@integer/max_length_character_breed"
+                    android:maxLines="@integer/max_lines_character_breed" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_add_character"
+                android:visibility="gone"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+            <ImageButton
+                android:id="@+id/btn_create_character"
+                style="@style/BaseCreateButton"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

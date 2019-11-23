@@ -1,0 +1,324 @@
+<resources>
+    <string name="app_name">RPG</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">Our warriors weren\'t enough…</string>
+    <string name="customactivityoncrash_error_activity_restart_app">Try Again</string>
+    <string name="customactivityoncrash_error_activity_close_app">Give Up</string>
+    <string name="customactivityoncrash_error_activity_error_details">Enemy details</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">Enemy details</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">Close</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">Get report</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">Report copied to clipboard</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">Enemy information</string>
+
+
+    <string name="date_post_pattern">HH:mm\nMM/dd/yyy</string>
+
+    <string name="description_test" translatable="false">
+        Innate: Kai Sa s basic attacks deal 4 − 10 (based on level) (+ 1 − 5 (based on level) per Plasma stack)
+        (+ 10% − 20% (based on Plasma stacks) AP) Magic damage bonus magic damage.Kai Sa Plasma
+        \n\n
+        Caustic Wounds: Kai Sa s basic attacks, Void Seeker Void Seeker, and nearby allies  Stun icon immobilizing effects mark enemies with Plasma for 4 seconds, stacking up to 4 times.
+        Kai Sa s attacks or Void Seeker Void Seeker can then rupture enemies with 4 Plasma,
+        consuming them to deal 15% (+ 2.5% per 100 AP) of the target s missing health magic damage, capped at 400 against monsters.
+        \n\n
+        Living Weapon: When reaching a certain amount of stat from items and stat growth, Kai Sa can evolve the related basic ability. 
+        This has a channel time of 2 seconds, and the upgrade is lost if the stat requirement is no longer met.</string>
+
+    <!-- Firebase Node Strings -->
+    <string name="user_object" translatable="false">user_object</string>
+    <string name="character_object" translatable="false">character_object</string>
+    <string name="host_character_object" translatable="false">host_character_object</string>
+    <string name="fragment_object" translatable="false">fragment_object</string>
+    <string name="default_fragment" translatable="false">default_fragment</string>
+    <string name="post_object" translatable="false">post_object</string>
+    <string name="weapon_object" translatable="false">weapon_object</string>
+    <string name="item_object" translatable="false">item_object</string>
+    <string name="maho_object" translatable="false">maho_object</string>
+    <string name="note_object" translatable="false">note_object</string>
+    <string name="skill_object" translatable="false">skill_object</string>
+
+
+    <string name="nickname">Nickname</string>
+    <string name="email" translatable="false">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_new_acc">Create New Account</string>
+    <string name="register_forgot_pass">I don\'t remember my password</string>
+    <string name="already_have_an_account">Already Have an Account</string>
+
+    <string name="character_name">Name</string>
+    <string name="character_breed">Breed</string>
+    <string name="character_classe">Class</string>
+
+
+    <string name="dice_roll">Dice Roll</string>
+    <string name="roll_history">Roll History</string>
+
+    <string name="modifier">Modifier</string>
+    <string name="roll_details_modifier">"  + (%1$d Modifier)"</string>
+
+
+    <string name="empty_field_error">Please, fill all the fields</string>
+    <string name="unexistent_user_error">There\'s no Account with this email</string>
+    <string name="wrong_email_or_password_error">Invalid email or Password</string>
+    <string name="duplicated_email_error">There\'s already an account using this email</string>
+    <string name="confirm_password_error">Passwords doesn\'t matches</string>
+    <string name="non_confirmed_email_error">Email has not been confirmed yet</string>
+
+    <string name="toast_permission_error">You must allow the permissions to continue…</string>
+    <string name="toast_add_image_error">Fail to add image\n</string>
+    <string name="toast_cant_post">Unfortunately you can\'t post yet\nRequest that permission to your master</string>
+    <string name="toast_post_limit">Post limit has been reached</string>
+    <string name="toast_cant_comment">Unfortunately you can\'t comment yet\nRequest that permission to your master</string>
+    <string name="toast_add_image_empty_error">Select an Image</string>
+    <string name="toast_no_image_error">Please, select an image before continue</string>
+    <string name="toast_update_image_successful">The Image was successfully updated</string>
+    <string name="toast_recover_email_send_successful">Password Reset Email send successfully</string>
+    <string name="toast_on_login_error">Loading data error\nPlease try again</string>
+    <string name="toast_invalid_email">Invalid email</string>
+
+    <string name="toast_kill_damage">Hahaha…\nIt was not a REAL Damage\nYou just testing the App… \nIsn\'t IT? &#128056;</string>
+
+    <string name="toast_offline_title">Out of Energy…</string>
+    <string name="toast_offline_msg">As well Spells needs Mana, we need Internet to work\nBe aware if you ignore this, errors and data loss can happen</string>
+    <string name="toast_offline_positive">Try again</string>
+
+    <string name="toast_exit_title">Closing App</string>
+    <string name="toast_exit_msg">Do you want to leave?</string>
+    <string name="toast_exit_positive">Yes, I\'m going</string>
+    <string name="toast_exit_negative">No, I\'ll stay</string>
+
+    <string name="collision_character_name_error">I\'m sorry\nDoppelgangers aren\'t accepted here…</string>
+
+    <string name="user_registered_successful">User registered successfully</string>
+    <string name="character_created_successful">Welcome, </string>
+    <string name="character_edited_successful">Sometimes, changes are necessary for rise</string>
+    <string name="weapon_created_successful">Weapon created successfully</string>
+    <string name="weapon_deleted_successful">Weapon deleted successfully</string>
+    <string name="weapon_edited_successful">I hope it was a buff</string>
+    <string name="post_created_successful">Post published successfully</string>
+    <string name="post_edited_successful">Post edited successfully</string>
+    <string name="item_created_successful">Item created successfully</string>
+    <string name="item_deleted_successful">Item deleted successfully</string>
+    <string name="item_edited_successful">I hope it was a buff…</string>
+    <string name="skill_created_successful">Skill created successfully</string>
+    <string name="skill_deleted_successful">Skill deleted successfully</string>
+    <string name="skill_edited_successful">I hope it was a buff…</string>
+    <string name="maho_created_successful">Mahō created successfully</string>
+    <string name="maho_edited_successful">I hope it was a buff…</string>
+    <string name="note_created_successful">Note created successfully</string>
+    <string name="note_deleted_successful">Note deleted successfully</string>
+    <string name="note_edited_successful">Note edited successfully</string>
+    <string name="xp_updated_successful">Current XP updated successfully</string>
+    <string name="level_updated_successful">Level updated successfully</string>
+
+
+    <string name="xp_history">XP History: %1$dXP</string>
+    <string name="current_xp">Current XP</string>
+    <string name="xp_added_successful">XP added successfully</string>
+    <string name="xp_added_failed">Failed to add XP</string>
+
+
+    <string name="add_attribute_error">Failed to add Attribute</string>
+    <string name="add_attribute_success">Attribute added successfully</string>
+    <string name="update_attribute_error">Failed to update Attribute</string>
+    <string name="update_attribute_success">Attribute updated successfully</string>
+
+    <string name="input_description">Description</string>
+    <string name="input_title">Title</string>
+
+    <string name="menu_add_cover_image">Update cover image</string>
+    <string name="menu_edit_character">Edit character\'s data</string>
+    <string name="menu_add_profile_picture">Update profile image</string>
+    <string name="menu_edit_bio">Edit biography</string>
+    <string name="menu_order_by_favorite">Order by favorite</string>
+
+
+    <string name="menu_edit_post">Edit post</string>
+    <string name="menu_delete_post">Delete post</string>
+
+
+    <string name="alert_delete_post_title">Delete Post</string>
+    <string name="alert_delete_post_msg">Are you sure?\nThis action can not be undone</string>
+    <string name="alert_delete_post_positive">Delete</string>
+    <string name="alert_delete_post_negative">Cancel</string>
+    <string name="toast_delete_post_success">Post deleted successfully</string>
+
+
+    <string name="alert_remove_xp_title">Remove XP register</string>
+    <string name="alert_remove_xp_msg">Are you sure?\nThis action cannot be undone</string>
+    <string name="alert_remove_btn">Yes, Remove</string>
+    <string name="alert_cancel_btn">Cancel</string>
+
+
+    <string name="alert_title_loading">Loading…</string>
+    <string name="alert_empty_comment_error">Comment cannot be empty…</string>
+    <string name="alert_empty_comment_successful">Comment published successfully</string>
+
+    <string name="alert_title_delete">Delete %1$s?</string>
+    <string name="alert_msg_delete">Are you sure?\nThis action can not be undone…</string>
+    <string name="alert_positive_button_delete">Delete</string>
+    <string name="alert_negative_button_delete">Cancel</string>
+
+
+    <string name="hint_type_a_comment">What\'s %1$s think?</string>
+
+
+    <string name="btn_comment">Comment</string>
+
+    <string name="post_edited_details">(edited)</string>
+
+    <string name="add_a_comment">Add a Comment:</string>
+    <string name="hint_weapon_name">Weapon Name</string>
+    <string name="hint_weapon_description">Tell how Amazing this Weapon is</string>
+    <string name="hind_weapon_damage">How much Damage this little beauty does?</string>
+    <string name="hint_weapon_amount">How much of this do you have?</string>
+    <string name="hint_weapon_details_damage">Damage:</string>
+    <string name="hint_weapon_dts_amount">Amount:</string>
+
+    <string name="hint_item_name">Item Name</string>
+    <string name="hint_item_description">Tell how Amazing this Item is</string>
+    <string name="hint_item_amount">How much of this do you have?</string>
+    <string name="hint_item_dts_amount">Amount:</string>
+
+    <string name="hint_skill_name">Skill Name</string>
+    <string name="hint_skill_description">Tell how Amazing this Skill is</string>
+    <string name="hint_skill_price">How expensive is this skill?</string>
+    <string name="hint_skill_cost">How about energy to execute it?</string>
+    <string name="hint_skill_damage">How much Damage it does?</string>
+    <string name="hint_skill_cooldown">Cooldown</string>
+    <string name="hint_skill_details_damage">Damage:</string>
+    <string name="hint_skill_details_cooldown">Cooldown:</string>
+    <string name="hint_skill_details_price">Price:</string>
+    <string name="hint_skill_details_cost">Cost:</string>
+
+
+    <string name="hint_note_name">Note Title</string>
+    <string name="hint_note_description">What do you have to tell us today?</string>
+    <string name="hint_maho_name">Maho Name</string>
+    <string name="hint_maho_description">Tell how Amazing this Maho is</string>
+    <string name="hint_maho_difficulty">How hard is to cast it?</string>
+    <string name="hint_maho_cost">How about energy to execute it?</string>
+    <string name="hint_maho_damage">How much Damage it does?</string>
+
+    <string name="hint_maho_details_damage">Damage:</string>
+    <string name="hint_maho_details_cost">Cost:</string>
+    <string name="hint_maho_details_difficulty">Difficulty:</string>
+
+
+    <string name="constitution">Constitution</string>
+    <string name="armor">Armor</string>
+    <string name="magic_resist_mr">MR</string>
+    <string name="magic_resist">Magic Resist</string>
+    <string name="hp" translatable="false">HP</string>
+    <string name="mp" translatable="false">MP</string>
+
+
+    <string name="armory">Armory</string>
+    <string name="weapons">Weapons</string>
+    <string name="inventory">Inventory</string>
+    <string name="m_items">Items</string>
+    <string name="maho" translatable="false">Mahō</string>
+    <string name="skill" translatable="false">Skill</string>
+    <string name="skills" translatable="false">Skills</string>
+    <string name="menu_delete_weapon_title">Delete Weapon</string>
+    <string name="menu_edit_weapon_title">Edit Weapon</string>
+    <string name="menu_favorite_weapon_title">Favorite Weapon</string>
+    <string name="menu_unfavorite_weapon_title">Unfavorite Weapon</string>
+    <string name="menu_edit_item_title">Edit Item</string>
+    <string name="menu_delete_item_title">Delete Item</string>
+    <string name="menu_favorite_item_title">Favorite Item</string>
+    <string name="menu_edit_skill_title">Edit Skill</string>
+    <string name="menu_delete_skill_title">Delete Skill</string>
+    <string name="menu_unfavorite_item_title">Unfavorite Item</string>
+    <string name="menu_favorite_skill_title">Favorite Skill</string>
+    <string name="menu_unfavorite_skill_title">Unfavorite Skill</string>
+    <string name="menu_delete_maho_title">Delete Mahō</string>
+    <string name="menu_edit_maho_title">Edit Mahō</string>
+    <string name="menu_favorite_maho_title">Favorite Mahō</string>
+    <string name="menu_unfavorite_maho_title">Unfavorite Mahō</string>
+    <string name="menu_edit_note_title">Edit Note</string>
+    <string name="menu_favorite_note_title">Favorite Note</string>
+    <string name="menu_unfavorite_note_title">Unfavorite Note</string>
+    <string name="menu_delete_note_title">Delete Note</string>
+    <string name="menu_add_attribute">Add New Attribute</string>
+    <string name="menu_damage_calculator">Damage Calculator</string>
+    <string name="menu_dice_roll">Dice Roll</string>
+    <string name="attributes">Attributes</string>
+    <string name="xp" translatable="false">XP</string>
+    <string name="update_level_title">Update Level</string>
+    <string name="update_current_xp">Update Current XP</string>
+    <string name="tavern">Tavern</string>
+    <string name="notes">Notes</string>
+    <string name="powers">Specials</string>
+    <string name="account">Account</string>
+    <string name="my_characters">My Characters</string>
+    <string name="exit">Exit</string>
+
+
+    <string name="dialog_likers_title">Likers:</string>
+
+    <string name="dialog_hp_title">Heal or Damage</string>
+    <string name="dialog_hp_heal">Heal</string>
+    <string name="dialog_hp_damage">Damage</string>
+    <string name="dialog_mp_title">Recover or Spent Mana</string>
+    <string name="dialog_mp_recover">Recover</string>
+    <string name="dialog_mp_spent">Spent</string>
+
+
+    <string name="dialog_add_xp_title">Add Experience Points</string>
+    <string name="dialog_add_btn_add">Add</string>
+    <string name="dialog_add_btn_subtract">Subtract</string>
+
+    <string name="dialog_hint_input_bio">%1$s\'s Biography</string>
+    <string name="dialog_btn_done_bio">Update</string>
+
+    <string name="dialog_visit_title">Do you want to visit %1$s?</string>
+    <string name="dialog_visit_msg">You will be redirected to %1$s\'s profile</string>
+    <string name="dialog_visit_confirm">Yes, I do</string>
+    <string name="dialog_visit_cancel">Maybe later</string>
+
+    <string name="alert_add_attr_btn_cancel">Cancel</string>
+    <string name="alert_add_attr_btn_confirm">Add</string>
+    <string name="alert_add_attr_hint_value">Value</string>
+    <string name="alert_add_attr_hint_name">Attribute Name</string>
+    <string name="dialog_add_attr_title">Add New Attribute</string>
+    <string name="alert_update_attr_btn_cancel">Cancel</string>
+    <string name="alert_update_attr_btn_confirm">Update</string>
+    <string name="alert_update_attr_hint_value" translatable="false"> %1$d</string>
+    <string name="alert_update_attr_hint_name" translatable="false"> %1$s</string>
+    <string name="dialog_update_attr_title">Update Attribute</string>
+
+    <string name="dialog_edit_char_title">Edit %1$s</string>
+    <string name="dialog_edit_char_hint_name">Name: %1$s</string>
+    <string name="dialog_edit_char_hint_breed">Breed: %1$s</string>
+    <string name="dialog_edit_char_hint_classe">Class: %1$s</string>
+    <string name="dialog_edit_char_positive">Update</string>
+    <string name="dialog_edit_char_negative">Cancel</string>
+
+    <string name="dialog_hint_damage_title">Damage Calculator</string>
+    <string name="dialog_hint_damage">Damage</string>
+    <string name="dialog_hint_armor">Armor</string>
+    <string name="dialog_hint_mr">Magic Resist</string>
+    <string name="dialog_hint_const">Constitution</string>
+    <string name="dialog_hint_modfier">Modifier</string>
+    <string name="dialog_checkbox_modfier">Modifier is Percentage</string>
+    <string name="dialog_btn_physical">Physical</string>
+    <string name="dialog_btn_magic">Magic</string>
+    <string name="dialog_btn_hybrid">Hybrid</string>
+
+    <string name="dialog_hint_MR">MR: %1$d</string>
+    <string name="dialog_hint_ARMOR">Armor: %1$d</string>
+    <string name="dialog_hint_CONST">Cons: %1$d</string>
+
+
+    <string name="alert_version_error_title">Your App is out of date</string>
+    <string name="alert_version_error_msg">Please, Install the newest application version</string>
+    <string name="alert_version_error_positive">Sure!</string>
+
+
+</resources>

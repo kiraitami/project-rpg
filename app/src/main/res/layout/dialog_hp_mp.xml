@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="16dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_hp_mp_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/dialog_hp_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="22sp" />
+
+
+        <EditText
+            android:id="@+id/dialog_hp_mp_input_value"
+            style="@style/BaseDialogEditTExt"
+            android:backgroundTint="#E9F3F3F3"
+            android:ems="10"
+            android:hint="@string/alert_add_attr_hint_value"
+            android:inputType="number"
+            android:maxLength="@integer/max_length_xp_value"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <Button
+                android:id="@+id/dialog_hp_mp_negative"
+                style="@style/BaseDialogButton"
+                android:backgroundTint="#D50000"
+                android:text="@string/dialog_hp_damage"
+                />
+
+            <Button
+                android:id="@+id/dialog_hp_mp_positive"
+                style="@style/BaseDialogButton"
+                android:backgroundTint="#00C853"
+                android:text="@string/dialog_hp_heal"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
