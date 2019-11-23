@@ -16,7 +16,7 @@ Them, enjoy it with your friends!
 
 The App has a default Firebase Project associated to it
 
-For a better experience and control, I recommend you replace with your own Firebase Project and custom everything that you want
+For a better experience and control, I recommend you replace with your own Firebase Project and custom everything as you wish
 
 The App was made with MVP architeture
 
@@ -29,7 +29,8 @@ The App was made with MVP architeture
 
 ### Installing and Customizing
 
-Follow the Firebase implementation guide
+* Follow the Firebase implementation guide
+
 Them you can custom the nodes in class
 
 ```java
@@ -38,7 +39,7 @@ public static final String NODE_CHARACTER = "character";
 ```
 
 
-And also change the path in each of model objects
+And also, change the path in each of model objects as you want
 ```java
 @Override
     public void saveInFirebase() {
