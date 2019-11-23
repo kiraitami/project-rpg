@@ -12,7 +12,7 @@ Also, it has a Tavern page, a kind of RPG Character's social media where you can
 
 Download or clone the App
 
-Them, enjoy it with your friends!
+Then, enjoy it with your friends!
 
 The App has a default Firebase Project associated to it
 
@@ -59,7 +59,7 @@ this.canPost = true; //-- default: false
 ```
 
 
-Replace with your own background images changing the following drawable
+Replace with your own background images changing the following drawable and similars
 
 ```
 \src\main\res\drawable\bg_01
@@ -139,7 +139,7 @@ Hybrid Damage:
 * **Portuguese - BR**
 
 
-## Custom Lybraries Credits
+## Custom Libraries Credits
 
 * **CircleImageView** - [Henning Dodenhof](https://github.com/hdodenhof)
 * **Glide** - [Bump Technologies](https://github.com/bumptech)
