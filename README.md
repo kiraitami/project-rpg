@@ -4,18 +4,19 @@ This is an App for RPG lovers
 
 Create your characters and store their informations, items, weapons, spells, skills, XP control, Dice Roll and more
 
-Also, it has a Tavenr page, a kind of RPG Character's social media where you can post, like and comment
+Also, it has a Tavern page, a kind of RPG Character's social media where you can post, like and comment
 
 
 
 ## Getting Started
 
 Download or clone the App
+
 Them, enjoy it with your friends!
 
 The App has a default Firebase Project associated to it
-For a better experience and control, I recommend you replace with your own Firebase Project
-And custom everything that you want
+
+For a better experience and control, I recommend you replace with your own Firebase Project and custom everything that you want
 
 The App was made with MVP architeture
 
