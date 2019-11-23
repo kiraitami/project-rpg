@@ -31,7 +31,7 @@ The App was made with MVP architeture
 
 * Follow the Firebase implementation guide
 
-Them you can custom the nodes in class
+Then you can custom the nodes in class
 
 ```java
 StringNodes.java
