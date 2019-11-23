@@ -251,7 +251,7 @@ public class PostDetailsActivity extends AppCompatActivity
 
     @Override
     public void showPostData() {
-        Glide.with(getApplicationContext()).load(post.getImageUrl()).override(720,720).thumbnail(0.1f).into(post_image);
+        Glide.with(getApplicationContext()).load(post.getImageUrl()).override(720, 720).thumbnail(0.1f).into(post_image);
         Glide.with(getApplicationContext()).load(post.getCharacterPictureUrl()).thumbnail(0.1f).into(character_picture);
         Glide.with(getApplicationContext()).load(character.getProfilePictureUrl()).thumbnail(0.1f).into(visitor_picture);
 
