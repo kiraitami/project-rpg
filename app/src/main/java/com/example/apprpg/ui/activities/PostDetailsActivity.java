@@ -55,7 +55,6 @@ public class PostDetailsActivity extends AppCompatActivity
     private LinearLayout add_comment_layout, post_owner_layout, likers_layout;
     private LikeButton btn_like;
     private CircleImageView character_picture, visitor_picture;
-    private CollapsingToolbarLayout collapsing_toolbar_layout;
     private Toolbar toolbar;
     private TextView post_title, post_description, user_name, character_name, likes_count, post_edited, post_date;
     private RecyclerView comments_recycler;
@@ -84,7 +83,7 @@ public class PostDetailsActivity extends AppCompatActivity
         setViewsById();
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setClickListenersEvents();
@@ -158,7 +157,6 @@ public class PostDetailsActivity extends AppCompatActivity
 
     private void setViewsById(){
         post_image = findViewById(R.id.post_details_image);
-        collapsing_toolbar_layout = findViewById(R.id.collapsing_toolbar_post_details);
         toolbar = findViewById(R.id.toolbar_inside_collapsing_post_details);
         post_title = findViewById(R.id.title_post_details);
         post_description = findViewById(R.id.desc_post_details);
@@ -244,7 +242,7 @@ public class PostDetailsActivity extends AppCompatActivity
     @Override
     public void getIntentData() {
         Bundle data = getIntent().getExtras();
-        post = (Post) data.getSerializable(getResources().getString(R.string.post_object));
+        post = (Post) Objects.requireNonNull(data).getSerializable(getResources().getString(R.string.post_object));
         user = (User) data.getSerializable(getResources().getString(R.string.user_object));
         character = (Character) data.getSerializable(getResources().getString(R.string.character_object));
     }
