@@ -126,6 +126,7 @@ public class MyCharactersFragment extends Fragment implements MyCharactersContra
     @Override
     public void onCharacterClick(Character character) {
         user.setCurrentCharacterId(character.getId());
+        user.saveInFirebase();
         ((MainActivity) Objects.requireNonNull(getActivity())).updateUserAndCharacter(user, character);
         ((MainActivity) Objects.requireNonNull(getActivity())).backToBeforeMyCharactersFragment();
     }

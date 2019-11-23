@@ -52,7 +52,7 @@ public class PostDetailsActivity extends AppCompatActivity
 
 
     private ImageView post_image;
-    private LinearLayout add_comment_layout, post_owner_layout;
+    private LinearLayout add_comment_layout, post_owner_layout, likers_layout;
     private LikeButton btn_like;
     private CircleImageView character_picture, visitor_picture;
     private CollapsingToolbarLayout collapsing_toolbar_layout;
@@ -171,6 +171,7 @@ public class PostDetailsActivity extends AppCompatActivity
         add_comment_layout = findViewById(R.id.add_comment_layout);
         visitor_picture = findViewById(R.id.visitor_profile_picture);
         post_owner_layout = findViewById(R.id.post_owner_layout);
+        likers_layout = findViewById(R.id.likers_layout);
         post_edited = findViewById(R.id.post_edited_details);
         post_date = findViewById(R.id.date_post_details);
     }
@@ -196,7 +197,10 @@ public class PostDetailsActivity extends AppCompatActivity
             presenter.requestComment(character.getCanPost());
         });
 
-        likes_count.setOnClickListener(view -> showLikersDialog());
+        likers_layout.setOnLongClickListener(view -> {
+            showLikersDialog();
+            return false;
+        });
 
         post_owner_layout.setOnClickListener(view -> {
             if (!post.getCharacterId().equals(character.getId())) {
@@ -247,7 +251,7 @@ public class PostDetailsActivity extends AppCompatActivity
 
     @Override
     public void showPostData() {
-        Glide.with(getApplicationContext()).load(post.getImageUrl()).thumbnail(0.1f).into(post_image);
+        Glide.with(getApplicationContext()).load(post.getImageUrl()).override(720,720).thumbnail(0.1f).into(post_image);
         Glide.with(getApplicationContext()).load(post.getCharacterPictureUrl()).thumbnail(0.1f).into(character_picture);
         Glide.with(getApplicationContext()).load(character.getProfilePictureUrl()).thumbnail(0.1f).into(visitor_picture);
 
