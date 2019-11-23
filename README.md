@@ -1,10 +1,10 @@
 # RPG Project
 
 This is an App for RPG lovers
+
 Create your characters and store their informations, items, weapons, spells, skills, XP control, Dice Roll and more
 
-
-And it has a Tavenr page, a kind of RPG Character's social media where you can post, like and comment
+Also, it has a Tavenr page, a kind of RPG Character's social media where you can post, like and comment
 
 
 
