@@ -1,13 +1,5 @@
 package com.example.apprpg.ui.activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,19 +13,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
+import com.example.apprpg.R;
 import com.example.apprpg.interfaces.PostDetailsContract;
 import com.example.apprpg.models.Character;
 import com.example.apprpg.models.Comment;
 import com.example.apprpg.models.Post;
 import com.example.apprpg.models.User;
 import com.example.apprpg.presenter.PostDetailsPresenter;
+import com.example.apprpg.ui.adapters.CommentsAdapter;
 import com.example.apprpg.utils.FirebaseHelper;
 import com.example.apprpg.utils.StringHelper;
 import com.example.apprpg.utils.StringNodes;
-import com.example.apprpg.R;
-import com.example.apprpg.ui.adapters.CommentsAdapter;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +49,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class PostDetailsActivity extends AppCompatActivity
         implements PostDetailsContract.PostDetailsView {
 
+    // testing commit
 
     private ImageView post_image;
     private LinearLayout add_comment_layout, post_owner_layout, likers_layout;
