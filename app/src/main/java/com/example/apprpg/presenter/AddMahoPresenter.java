@@ -21,10 +21,8 @@ public class AddMahoPresenter implements AddMahoContract.AddMahoPresenter {
         view.onAddLoading();
         boolean isNewMaho = maho == null;
 
-        if (name.trim().isEmpty() || formatToName(name).isEmpty()
+        if (name.trim().isEmpty() || removeEmojis(name).isEmpty()
                 ||description.trim().isEmpty()
-                || damage.trim().isEmpty() || removeEmojis(damage.trim()).isEmpty()
-                || difficulty.trim().isEmpty() || removeEmojis(description.trim()).isEmpty()
                 || cost.trim().isEmpty() || removeEmojis(cost.trim()).isEmpty()
         ){
             view.onEmptyFields();
@@ -35,11 +33,11 @@ public class AddMahoPresenter implements AddMahoContract.AddMahoPresenter {
             }
 
             maho.setCharacterId(characterId);
-            maho.setName(formatToName(name));
+            maho.setName(removeEmojis(name));
             maho.setDescription(removeEmojis(description));
-            maho.setDamage(removeEmojis(damage));
-            maho.setDifficulty(removeEmojis(difficulty));
-            maho.setCost(removeEmojis(cost));
+            maho.setDamage(removeEmojis(damage).trim().isEmpty() ? removeEmojis(damage).trim() : null);
+            maho.setDifficulty(removeEmojis(difficulty).trim().isEmpty() ? removeEmojis(difficulty).trim() : null);
+            maho.setCost(removeEmojis(cost).trim());
             maho.setFavorite(0);
             maho.saveInFirebase();
 

@@ -20,7 +20,7 @@ public class AddWeaponPresenter
         view.onAddLoading();
         boolean isNewWeapon = weapon == null;
 
-        if (name.trim().isEmpty() || StringHelper.formatToName(name).isEmpty()
+        if (name.trim().isEmpty() || StringHelper.removeEmojis(name).isEmpty()
                 || description.trim().isEmpty()
                 || damage.trim().isEmpty() || StringHelper.removeEmojis(damage).isEmpty()
                 || amount.trim().isEmpty()){
@@ -32,7 +32,7 @@ public class AddWeaponPresenter
             }
 
             weapon.setCharacterId(character.getId());
-            weapon.setName(StringHelper.formatToName(name));
+            weapon.setName(StringHelper.removeEmojis(name));
             weapon.setDescription(description);
             weapon.setDamage(StringHelper.removeEmojis(damage));
             weapon.setAmount(Integer.parseInt(amount));

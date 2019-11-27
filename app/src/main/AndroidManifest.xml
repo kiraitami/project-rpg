@@ -83,7 +83,7 @@
         <activity
             android:name="com.example.apprpg.ui.activities.LoginActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name="com.example.apprpg.ui.activities.MainActivity" />
 
         <service

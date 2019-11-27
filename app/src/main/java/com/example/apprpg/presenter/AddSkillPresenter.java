@@ -19,10 +19,8 @@ public class AddSkillPresenter implements AddSkillContract.AddSpellPresenter {
         view.onAddLoading();
         boolean isNewSkill = skill == null;
 
-        if (name.trim().isEmpty()  || StringHelper.formatToName(name).isEmpty()
-                || description.trim().isEmpty()
-                || damage.trim().isEmpty() || StringHelper.removeEmojis(damage).isEmpty()
-                || price.trim().isEmpty() ){
+        if (name.trim().isEmpty()  || StringHelper.removeEmojis(name).isEmpty()
+                || description.trim().isEmpty() ){
             view.onEmptyFields();
         }
         else {
@@ -31,11 +29,11 @@ public class AddSkillPresenter implements AddSkillContract.AddSpellPresenter {
             }
 
             skill.setCharacterId(characterId);
-            skill.setName(StringHelper.formatToName(name));
+            skill.setName(StringHelper.removeEmojis(name.trim()));
             skill.setDescription(description);
-            skill.setDamage(StringHelper.removeEmojis(damage));
-            skill.setPrice(price);
-            skill.setCost(cost.trim().isEmpty() ? null : StringHelper.removeEmojis(cost));
+            skill.setDamage(damage.trim().isEmpty() ? null : StringHelper.removeEmojis(damage.trim()));
+            skill.setPrice(price.trim().isEmpty() ? null : StringHelper.removeEmojis(price.trim()));
+            skill.setCost(cost.trim().isEmpty() ? null : StringHelper.removeEmojis(cost.trim()));
             skill.setCooldown(cooldown.trim().isEmpty() ? null : StringHelper.removeEmojis(cooldown));
             skill.setFavorite(0);
             skill.saveInFirebase();

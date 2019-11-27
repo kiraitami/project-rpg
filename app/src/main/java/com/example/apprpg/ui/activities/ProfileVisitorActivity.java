@@ -33,7 +33,7 @@ public class ProfileVisitorActivity extends AppCompatActivity
 
 
     private User guestUser;
-    private Character hostCharacter, guestCharacter;
+    private Character hostCharacter = null, guestCharacter = null;
     private String hostCharacterId;
     private ImageView cover_image;
     private CircleImageView profile_picture;
@@ -56,6 +56,8 @@ public class ProfileVisitorActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         loadHostCharacterFromFirebase();
+
+        clickEventActions();
     }
 
     @Override
@@ -76,7 +78,8 @@ public class ProfileVisitorActivity extends AppCompatActivity
         Bundle data = getIntent().getExtras();
         guestUser = (User) data.getSerializable(getResources().getString(R.string.user_object));
         guestCharacter = (Character) data.getSerializable(getResources().getString(R.string.character_object));
-        hostCharacterId = data.getString(getResources().getString(R.string.host_character_object));
+        hostCharacter = (Character) data.getSerializable(getResources().getString(R.string.host_character_object));
+        hostCharacterId = data.getString(getResources().getString(R.string.host_character_id));
     }
 
     @Override
@@ -95,27 +98,32 @@ public class ProfileVisitorActivity extends AppCompatActivity
 
     @Override
     public void loadHostCharacterFromFirebase(){
-        DatabaseReference databaseReference = FirebaseHelper.getFirebaseRef();
-        databaseReference.child(NODE_CHARACTER)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot usersIds : dataSnapshot.getChildren()){
-                            if (usersIds.child(hostCharacterId).exists()){
-                                hostCharacter = usersIds.child(hostCharacterId).getValue(Character.class);
-                                onLoadHostSuccess();
+        if (hostCharacter == null) {
+            DatabaseReference databaseReference = FirebaseHelper.getFirebaseRef();
+            databaseReference.child(NODE_CHARACTER)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot usersIds : dataSnapshot.getChildren()) {
+                                if (usersIds.child(hostCharacterId).exists()) {
+                                    hostCharacter = usersIds.child(hostCharacterId).getValue(Character.class);
+                                    onLoadHostSuccess();
+                                }
+                            }
+                            if (hostCharacter == null) {
+                                onLoadHostFailed();
                             }
                         }
-                        if (hostCharacter == null){
-                            onLoadHostFailed();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                    });
+        }
+        else {
+            showData();
+        }
     }
 
     @Override
@@ -125,7 +133,7 @@ public class ProfileVisitorActivity extends AppCompatActivity
 
     @Override
     public void onLoadHostFailed() {
-         // todo: Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show();
+        // todo: Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show();
         exit();
     }
 
