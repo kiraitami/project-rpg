@@ -35,12 +35,13 @@ public class FirstActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        /*
         CaocConfig.Builder.create()
                 .trackActivities(true)
                 .restartActivity(FirstActivity.class)
                 .errorDrawable(R.drawable.ic_very_dissatisfied_240dp)
                 .apply();
-
+*/
        // validateVersion();
         goToLoginActivity();
     }

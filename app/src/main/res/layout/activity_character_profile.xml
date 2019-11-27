@@ -67,6 +67,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_character_profile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
@@ -89,6 +90,20 @@
                 android:paddingBottom="10dp"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/edit_profile_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:drawableEnd="@drawable/ic_edit_bio"
+                android:drawablePadding="4dp"
+                android:text="@string/edit_bio"
+                android:textColor="#0091EA"
+                android:textSize="15sp"
+                />
 
             <EditText
                 android:id="@+id/input_profile_bio"
@@ -143,16 +158,5 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_save_editions_character"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        android:visibility="gone"
-        app:srcCompat="@drawable/ic_done_all" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

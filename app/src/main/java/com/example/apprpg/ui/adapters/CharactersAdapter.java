@@ -1,5 +1,6 @@
 package com.example.apprpg.ui.adapters;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.bumptech.glide.RequestManager;
 import com.example.apprpg.models.Character;
 import com.example.apprpg.presenter.MyCharactersPresenter;
 import com.example.apprpg.R;
+import com.example.apprpg.utils.StringHelper;
 
 import java.util.List;
 
@@ -43,7 +45,14 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.My
 
         requestManager.load(character.getProfilePictureUrl()).thumbnail(0.1f).into(holder.profile_picture);
         holder.character_name.setText(character.getName());
-        holder.character_breed.setText(character.getBreed());
+
+        Handler handler = new Handler();
+        handler.post(() -> {
+            String bio = StringHelper.formatToAdapterBiography(character.getBioDescription());
+            holder.character_bio.setText( bio.isEmpty() ? character.getBreed() : bio );
+        });
+
+
         holder.itemView.setOnClickListener(view -> presenter.onCharacterClick(character));
 
     }
@@ -57,13 +66,13 @@ public class CharactersAdapter extends RecyclerView.Adapter<CharactersAdapter.My
 
         private CircleImageView profile_picture;
         private TextView character_name;
-        private TextView character_breed;
+        private TextView character_bio;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
             profile_picture = itemView.findViewById(R.id.character_adapter_profile_picture);
             character_name = itemView.findViewById(R.id.character_adapter_name);
-            character_breed = itemView.findViewById(R.id.character_adapter_profile_breed);
+            character_bio = itemView.findViewById(R.id.character_adapter_profile_bio);
         }
     }
 }

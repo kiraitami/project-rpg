@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.widget.NestedScrollView;
 
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -34,6 +36,7 @@ import com.example.apprpg.R;
 import com.example.apprpg.ui.dialog.EditCharacterDialog;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,13 +46,13 @@ public class CharacterProfileActivity extends AppCompatActivity
 
     private ImageView cover_image;
     private CircleImageView profile_picture;
-    private FloatingActionButton fab_save_editions;
     private AlertDialog alertDialog;
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsing_toolbar_l;
-    private TextView bio_description;
+    private TextView bio_description, edit_bio;
     private EditText input_bio;
     private Button btn_update_bio, btn_update_bio_cancel;
+    private NestedScrollView nested_scroll;
 
     private EditCharacterDialog editCharacterDialog;
 
@@ -108,11 +111,6 @@ public class CharacterProfileActivity extends AppCompatActivity
             case R.id.menu_edit_character:
                 onEditCharacterClick();
                 break;
-
-            case R.id.menu_edit_bio:
-                input_bio.setText(character.getBioDescription());
-                setEditBioVisibility(true);
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,7 +134,7 @@ public class CharacterProfileActivity extends AppCompatActivity
                     break;
             }
 
-            fab_save_editions.show();
+            makeSaveEditionsSnackBar();
         }
     }
 
@@ -190,33 +188,36 @@ public class CharacterProfileActivity extends AppCompatActivity
         Glide.with(this)
                 .load(character.getProfilePictureUrl())
                 .thumbnail(0.2f)
+                .override(720,720)
                 .into(profile_picture);
 
         Glide.with(this)
                 .load(character.getCoverPictureUrl())
+                .override(1080,720)
                 .thumbnail(0.2f)
                 .into(cover_image);
     }
 
 
     private void setViewsById(){
-        fab_save_editions = findViewById(R.id.fab_save_editions_character);
         cover_image = findViewById(R.id.cover_image_char_prof);
         profile_picture = findViewById(R.id.profile_picture_char_prof);
         toolbar = findViewById(R.id.toolbar_inside_collapsing_char_prof);
         collapsing_toolbar_l = findViewById(R.id.collapsing_toolbar_char_prof);
         bio_description = findViewById(R.id.profile_bio);
+        edit_bio = findViewById(R.id.edit_profile_bio);
         input_bio = findViewById(R.id.input_profile_bio);
         btn_update_bio = findViewById(R.id.btn_update_bio);
         btn_update_bio_cancel = findViewById(R.id.btn_update_bio_cancel);
+        nested_scroll = findViewById(R.id.nested_scroll_character_profile);
     }
 
     private void setClickEventsActions(){
-        fab_save_editions.setOnClickListener(view -> {
-            onLoadSaving();
-            presenter.addCoverPicture(selectedCoverImage, user, character);
-            presenter.addProfilePicture(selectedProfilePicture, user, character);
-        } );
+        btn_update_bio.setOnClickListener(view -> {
+            character.setBioDescription(presenter.updateBiography(input_bio.getText().toString()));
+            StringHelper.formatToDescription(character.getBioDescription(),bio_description);
+            setEditBioVisibility(false);
+        });
 
         btn_update_bio.setOnClickListener(view -> {
             character.setBioDescription(presenter.updateBiography(input_bio.getText().toString()));
@@ -224,8 +225,22 @@ public class CharacterProfileActivity extends AppCompatActivity
             setEditBioVisibility(false);
         });
 
-        btn_update_bio_cancel.setOnClickListener(view -> setEditBioVisibility(false));
+        edit_bio.setOnClickListener(view -> {
+            input_bio.setText(character.getBioDescription());
+            setEditBioVisibility(true);
+        });
 
+    }
+
+    private void makeSaveEditionsSnackBar(){
+        Snackbar.make(nested_scroll, getResources().getString(R.string.snackbar_update_profile_images),Snackbar.LENGTH_INDEFINITE)
+                .setAction(getResources().getString(R.string.snackbar_update_profile_images_btn), view -> {
+                    onLoadSaving();
+                    presenter.addCoverPicture(selectedCoverImage, user, character);
+                    presenter.addProfilePicture(selectedProfilePicture, user, character);
+                })
+                .setActionTextColor(Color.WHITE)
+                .show();
     }
 
     private void setEditBioVisibility(boolean visible){
@@ -316,7 +331,7 @@ public class CharacterProfileActivity extends AppCompatActivity
     public void onImageSaveSuccessful() {
         Toast.makeText(this, getResources().getString(R.string.toast_update_image_successful), Toast.LENGTH_SHORT).show();
         alertDialog.dismiss();
-        fab_save_editions.hide();
+        loadImages();
     }
 
     @Override

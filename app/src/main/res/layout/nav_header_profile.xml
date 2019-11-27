@@ -11,7 +11,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <ImageView
-        android:src="@drawable/bg_01"
+        android:src="@drawable/bg_default"
         android:scaleType="centerCrop"
         android:id="@+id/nav_cover_image"
         android:layout_width="0dp"
