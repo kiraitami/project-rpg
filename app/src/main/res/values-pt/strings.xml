@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">RPG</string>
+    <string name="app_name">RPG Kiraitami</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -71,7 +71,7 @@
     <string name="dialog_add_attr_title">Adicionar Novo Atributo</string>
     <string name="dialog_add_btn_add">Adicionar</string>
     <string name="dialog_add_btn_subtract">Subtrair</string>
-    <string name="dialog_add_xp_title">Adicionar XP</string>
+    <string name="dialog_add_xp_title">Inserir XP</string>
     <string name="dialog_btn_hybrid">Híbrido</string>
     <string name="dialog_btn_magic">Mágico</string>
     <string name="dialog_btn_physical">Físico</string>
@@ -211,7 +211,7 @@
     <string name="weapons">Armas</string>
     <string name="xp_added_failed">Falha ao adicionar XP</string>
     <string name="xp_added_successful">XP adicionada com sucesso</string>
-    <string name="xp_history">Histórico de XP: %1$dXP</string>
+    <string name="xp_history">Histórico de XP:\nTotal: %1$d XP</string>
     <string name="xp_updated_successful">XP atual atualizada com sucesso</string>
     <string name="register_forgot_pass">Esqueci minha senha</string>
     <string name="toast_invalid_email">Email inválido</string>
@@ -237,4 +237,15 @@
     <string name="menu_delete_skill_title">Excluir Skill</string>
     <string name="menu_edit_item_title">Editar Item</string>
     <string name="menu_edit_skill_title">Editar Skill</string>
+    <string name="notification_commented_post">%1$s comentou no seu post: %2$s</string>
+    <string name="snackbar_update_profile_images">Imagem escolhida com sucesso</string>
+    <string name="snackbar_update_profile_images_btn">Atualizar</string>
+    <string name="menu_subscribe_post">Notificações</string>
+    <string name="notification_new_post">%1$s fez uma nova publicação</string>
+    <string name="toast_select_image_error">Erro ao selecionar imagem</string>
+    <string name="toast_load_image_error">Erro ao carregar imagem</string>
+    <string name="edit_bio"><u>Editar Biografia</u></string>
+    <string name="toast_trash_error">Isso aqui não é um aterro sanitário</string>
+    <string name="all_characters">Personagens</string>
+    <string name="menu_all_characters">Mostrar Todos os Personagens</string>
 </resources>

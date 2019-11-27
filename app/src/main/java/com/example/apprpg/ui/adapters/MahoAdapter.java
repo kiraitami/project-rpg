@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,12 +40,19 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
         Maho maho = mahoList.get(position);
 
         holder.name.setText(maho.getName());
-        StringHelper.formatToDescription(maho.getDescription(), holder.description);
-        holder.damage.setText(maho.getDamage());
+        holder.description.setText(maho.getDescription());
         holder.cost.setText(maho.getCost());
-        holder.difficulty.setText(maho.getDifficulty());
 
-        holder.itemView.setOnClickListener(view -> presenter.onItemClick(maho));
+        if (maho.getDamage() == null || maho.getDamage().trim().isEmpty())
+            holder.difficulty_layout.setVisibility(View.GONE);
+        else
+            holder.difficulty.setText(maho.getDifficulty());
+
+        if (maho.getDamage() == null || maho.getDamage().trim().isEmpty())
+            holder.damage_layout.setVisibility(View.GONE);
+        else
+            holder.damage.setText(maho.getDamage());
+
 
         holder.favorite.setVisibility( maho.getFavorite() > 0 ? View.VISIBLE : View.GONE);
 
@@ -58,6 +66,7 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, description, damage, cost, difficulty;
+        LinearLayout damage_layout, difficulty_layout;
         ImageView favorite;
 
         MyViewHolder(@NonNull View itemView) {
@@ -69,6 +78,8 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
             cost = itemView.findViewById(R.id.maho_adapter_cost);
             difficulty = itemView.findViewById(R.id.maho_adapter_difficulty);
             favorite = itemView.findViewById(R.id.maho_adapter_favorite);
+            damage_layout = itemView.findViewById(R.id.adapter_maho_layout_damage);
+            difficulty_layout = itemView.findViewById(R.id.adapter_maho_layout_difficulty);
 
         }
     }

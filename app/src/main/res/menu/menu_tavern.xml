@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="all">
+
+        <item android:id="@+id/op_menu_subscribe_tavern"
+            android:titleCondensed="@string/menu_subscribe_post"
+            android:title="@string/menu_subscribe_post"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:checkable="true">
+        </item>
+    </group>
+
+    <item
+        android:id="@+id/op_menu_all_characters"
+        android:title="@string/menu_all_characters"
+        app:showAsAction="never"/>
+
+</menu>

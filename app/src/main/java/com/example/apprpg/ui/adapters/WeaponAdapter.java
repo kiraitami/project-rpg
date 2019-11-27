@@ -39,7 +39,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.MyViewHold
         Weapon weapon = weaponList.get(position);
 
         holder.name.setText(weapon.getName());
-        StringHelper.formatToDescription(weapon.getDescription(), holder.description);
+        holder.description.setText(weapon.getDescription());
         holder.damage.setText(weapon.getDamage());
 
         holder.itemView.setOnClickListener(view -> presenter.onWeaponClick(weapon));

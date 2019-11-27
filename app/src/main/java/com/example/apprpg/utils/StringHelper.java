@@ -29,6 +29,19 @@ public class StringHelper {
         return removeDoubleSpaces(after);
     }
 
+    public static String formatToAdapterBiography(String bio){
+        if (bio == null || bio.isEmpty()){
+            return "";
+        }
+
+        return removeDoubleSpaces( bio
+                .replaceAll("\\*","")
+                .replaceAll("_","")
+                .replaceAll("#","")
+                .replaceAll("\\n","")
+                .trim() );
+    }
+
     public static void formatToDescription(String nText, TextView textView){
         if (nText != null && !nText.isEmpty()) {
             if (nText.contains("*") || nText.contains("_") || nText.contains("~")) {

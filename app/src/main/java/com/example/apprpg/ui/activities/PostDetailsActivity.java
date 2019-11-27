@@ -33,6 +33,7 @@ import com.example.apprpg.ui.adapters.CommentsAdapter;
 import com.example.apprpg.utils.FirebaseHelper;
 import com.example.apprpg.utils.StringHelper;
 import com.example.apprpg.utils.StringNodes;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,16 +47,16 @@ import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.apprpg.utils.StringNodes.NODE_COMMENT;
+
 public class PostDetailsActivity extends AppCompatActivity
         implements PostDetailsContract.PostDetailsView {
-
-    // testing commit.........
-    //?????????
 
     private ImageView post_image;
     private LinearLayout add_comment_layout, post_owner_layout, likers_layout;
     private LikeButton btn_like;
     private CircleImageView character_picture, visitor_picture;
+    private CollapsingToolbarLayout collapsing_toolbar_layout;
     private Toolbar toolbar;
     private TextView post_title, post_description, user_name, character_name, likes_count, post_edited, post_date;
     private RecyclerView comments_recycler;
@@ -84,7 +85,7 @@ public class PostDetailsActivity extends AppCompatActivity
         setViewsById();
 
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         setClickListenersEvents();
@@ -158,6 +159,7 @@ public class PostDetailsActivity extends AppCompatActivity
 
     private void setViewsById(){
         post_image = findViewById(R.id.post_details_image);
+        collapsing_toolbar_layout = findViewById(R.id.collapsing_toolbar_post_details);
         toolbar = findViewById(R.id.toolbar_inside_collapsing_post_details);
         post_title = findViewById(R.id.title_post_details);
         post_description = findViewById(R.id.desc_post_details);
@@ -196,16 +198,17 @@ public class PostDetailsActivity extends AppCompatActivity
             presenter.requestComment(character.getCanPost());
         });
 
-        likers_layout.setOnLongClickListener(view -> {
-            showLikersDialog();
-            return false;
-        });
-
         post_owner_layout.setOnClickListener(view -> {
             if (!post.getCharacterId().equals(character.getId())) {
                 visitDialog(post.getCharacterId(), post.getCharacterName());
             }
         });
+
+        likers_layout.setOnLongClickListener(view -> {
+            showLikersDialog(post.getLikersList());
+            return false;
+        });
+
 
     }
 
@@ -243,14 +246,16 @@ public class PostDetailsActivity extends AppCompatActivity
     @Override
     public void getIntentData() {
         Bundle data = getIntent().getExtras();
-        post = (Post) Objects.requireNonNull(data).getSerializable(getResources().getString(R.string.post_object));
+        post = (Post) data.getSerializable(getResources().getString(R.string.post_object));
         user = (User) data.getSerializable(getResources().getString(R.string.user_object));
         character = (Character) data.getSerializable(getResources().getString(R.string.character_object));
     }
 
     @Override
     public void showPostData() {
-        Glide.with(getApplicationContext()).load(post.getImageUrl()).override(720, 720).thumbnail(0.1f).into(post_image);
+        Glide.with(getApplicationContext()).load(post.getImageUrl())
+                .override(720,720)
+                .thumbnail(0.1f).into(post_image);
         Glide.with(getApplicationContext()).load(post.getCharacterPictureUrl()).thumbnail(0.1f).into(character_picture);
         Glide.with(getApplicationContext()).load(character.getProfilePictureUrl()).thumbnail(0.1f).into(visitor_picture);
 
@@ -267,7 +272,7 @@ public class PostDetailsActivity extends AppCompatActivity
 
     @Override
     public void loadCommentsFromFirebase() {
-        databaseReference = FirebaseHelper.getFirebaseRef().child(StringNodes.NODE_COMMENT).child(post.getId());
+        databaseReference = FirebaseHelper.getFirebaseRef().child(NODE_COMMENT).child(post.getId());
         commentEventListener = databaseReference
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -316,7 +321,7 @@ public class PostDetailsActivity extends AppCompatActivity
                     Intent intent = new Intent(PostDetailsActivity.this, ProfileVisitorActivity.class);
                     intent.putExtra(getResources().getString(R.string.user_object), user);
                     intent.putExtra(getResources().getString(R.string.character_object), character);
-                    intent.putExtra(getResources().getString(R.string.host_character_object), hostCharacterId);
+                    intent.putExtra(getResources().getString(R.string.host_character_id), hostCharacterId);
                     startActivityForResult(intent, 0);
                 })
                 .setNegativeButton(getResources().getString(R.string.dialog_visit_cancel), null);
@@ -325,13 +330,13 @@ public class PostDetailsActivity extends AppCompatActivity
     }
 
     @Override
-    public void showLikersDialog() {
+    public void showLikersDialog(List<String> likersNames) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_likers_list, null);
         TextView likers_names = view.findViewById(R.id.tv_dialog_likers_names);
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(getResources().getString(R.string.dialog_likers_title)).append("\n\n");
-        for (String name : post.getLikersList()){
+        for (String name : likersNames){
             stringBuilder.append(name).append("\n");
         }
         likers_names.setText(stringBuilder.toString());
@@ -351,7 +356,15 @@ public class PostDetailsActivity extends AppCompatActivity
     }
 
     @Override
-    public void onCommentSuccessful() {
+    public void onCommentSuccessful(String commentBody) {
+
+        if (!character.getId().equals(post.getCharacterId())){
+            presenter.buildNotification(
+                    getResources().getString(R.string.notification_commented_post, character.getName(), post.getTitle()),
+                    "\""+commentBody+"\"",
+                    post.getId()     );
+        }
+
         alertDialog.dismiss();
         Toast.makeText(this, getResources().getString(R.string.alert_empty_comment_successful), Toast.LENGTH_SHORT).show();
     }

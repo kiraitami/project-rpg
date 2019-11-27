@@ -44,6 +44,7 @@
             style="@style/AdapterDescriptionTheme" />
 
         <LinearLayout
+            android:id="@+id/adapter_maho_layout_difficulty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -64,6 +65,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/adapter_maho_layout_damage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">

@@ -116,7 +116,7 @@ public class DamageCalculatorDialog extends Dialog implements View.OnClickListen
         if (input.getText() == null || input.getText().toString().trim().isEmpty()){
             return 0;
         }
-        String s = input.getText().toString().replaceAll("[^0-9]","");
+        String s = input.getText().toString().replaceAll("[^0-9\\-]","");
         return s.isEmpty() ? 0 : Integer.parseInt(s);
     }
 }

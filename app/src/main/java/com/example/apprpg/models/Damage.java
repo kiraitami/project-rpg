@@ -70,11 +70,11 @@ public class Damage {
         double constPercentage = (1- (double) restrictedConst/100);
 
         if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
+            double modifierCalc = (1 + ((double) (modifier) / 100));
             return  (int) ( (firstDamageLayer * constPercentage) * modifierCalc );
         }
         else {
-            return (int) ( (firstDamageLayer * constPercentage) + modifier );
+            return (int) ( (firstDamageLayer * constPercentage) + (modifier) );
         }
     }
 
@@ -85,13 +85,12 @@ public class Damage {
 
         int firstDamageLayer = (int) ((damage - mr) - (mr /2));
         double mrPercentage = (1- (double) restrictedMr/100);
-
         if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
+            double modifierCalc = (1 + ((double) (modifier) / 100));
             return  (int) ( (firstDamageLayer * mrPercentage) * modifierCalc );
         }
         else {
-            return (int) ( (firstDamageLayer * mrPercentage) + modifier );
+            return (int) ( (firstDamageLayer * mrPercentage) + (modifier) );
         }
     }
 
@@ -114,12 +113,12 @@ public class Damage {
         double consMRPercentage = (1- (double) restrictedConsMR/100);
 
         if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
+            double modifierCalc = (1 + ((double) (modifier) / 100));
 
             return  (int) ( (firstDamageLayer * consMRPercentage) * modifierCalc );
         }
         else {
-            return (int) ( (firstDamageLayer * consMRPercentage) + modifier );
+            return (int) ( (firstDamageLayer * consMRPercentage) + (modifier) );
         }
     }
 

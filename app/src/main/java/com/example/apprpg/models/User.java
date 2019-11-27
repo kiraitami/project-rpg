@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
 
+import static com.example.apprpg.utils.StringNodes.NODE_CURRENT_CHARACTER;
 import static com.example.apprpg.utils.StringNodes.NODE_USER;
 
 public class User
@@ -16,6 +17,7 @@ public class User
     private String password;
     private String nickname;
     private String currentCharacterId;
+    private boolean enablePostNotifications;
 
     public User() { // empty constructor for firebase
     }
@@ -84,6 +86,14 @@ public class User
         return getId();
     }
 
+    public void updateCurrentCharacterInFirebase(){
+        DatabaseReference databaseReference = FirebaseHelper.getFirebaseRef();
+        databaseReference.child(NODE_USER)
+                .child(this.id)
+                .child(NODE_CURRENT_CHARACTER)
+                .setValue(this.currentCharacterId);
+    }
+
 
     public String getCurrentCharacterId() {
         return currentCharacterId;
@@ -91,6 +101,14 @@ public class User
 
     public void setCurrentCharacterId(String currentCharacterId) {
         this.currentCharacterId = currentCharacterId;
+    }
+
+    public boolean getEnablePostNotifications() {
+        return enablePostNotifications;
+    }
+
+    public void setEnablePostNotifications(boolean enablePostNotifications) {
+        this.enablePostNotifications = enablePostNotifications;
     }
 
     public String getEmail() {

@@ -9,10 +9,12 @@ public class StringNodes {
     public static final String NODE_SKILL = "skill";
     public static final String NODE_MAHO = "spell";
     public static final String NODE_USER = "user";
+    public static final String NODE_CURRENT_CHARACTER = "currentCharacterId";
     public static final String NODE_XP = "xp";
     public static final String NODE_ROLLS = "dice_roll";
     public static final String NODE_NOTES = "notes";
     public static final String NODE_VERSION_CONTROL = "version_control";
+    public static final String NODE_VERSION_LINK = "version_link";
     public static final String NODE_POST_IMAGES = "post_images";
     public static final String NODE_POST = "post";
     public static final String NODE_POST_COUNT = "post_count";

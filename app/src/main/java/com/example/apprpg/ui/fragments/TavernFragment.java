@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -22,8 +25,10 @@ import com.example.apprpg.interfaces.TavernContract;
 import com.example.apprpg.models.Character;
 import com.example.apprpg.models.Post;
 import com.example.apprpg.models.User;
+import com.example.apprpg.notification.BaseUrlsAndTopics;
 import com.example.apprpg.presenter.TavernPresenter;
 import com.example.apprpg.ui.activities.AddPostActivity;
+import com.example.apprpg.ui.activities.MainActivity;
 import com.example.apprpg.ui.activities.PostDetailsActivity;
 import com.example.apprpg.utils.FirebaseHelper;
 import com.example.apprpg.utils.StringNodes;
@@ -34,10 +39,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
+
+import static com.example.apprpg.utils.StringNodes.NODE_POST;
+import static com.example.apprpg.utils.StringNodes.NODE_POST_COUNT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,6 +90,7 @@ public class TavernFragment extends Fragment
         getIntentData();
         setViewsById();
 
+        setHasOptionsMenu(true);
         toolbar.setTitle(getResources().getString(R.string.tavern));
 
         clickEventActions();
@@ -111,6 +122,43 @@ public class TavernFragment extends Fragment
     }
 
     @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_tavern, menu);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.getItem(0).setChecked(user.getEnablePostNotifications());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.op_menu_subscribe_tavern){
+            if (!item.isChecked()){
+                item.setChecked(true);
+                FirebaseMessaging.getInstance().subscribeToTopic(BaseUrlsAndTopics.TAVERN_TOPIC);
+            }
+            else {
+                item.setChecked(false);
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(BaseUrlsAndTopics.TAVERN_TOPIC);
+            }
+            user.setEnablePostNotifications(item.isChecked());
+            user.saveInFirebase();
+        }
+
+        else if (item.getItemId() == R.id.op_menu_all_characters){
+            ((MainActivity) Objects.requireNonNull(getActivity())).updateUserAndCharacter(user, character);
+            ((MainActivity) Objects.requireNonNull(getActivity())).goToAllCharacters();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
     public void getIntentData() {
         Bundle data = getArguments();
         user = (User) data.getSerializable(getResources().getString(R.string.user_object));
@@ -140,9 +188,8 @@ public class TavernFragment extends Fragment
     @Override
     public void loadPostsFromFirebase() {
         onLoadingFromFirebase();
-        databaseReference = FirebaseHelper.getFirebaseRef();
+        databaseReference = FirebaseHelper.getFirebaseRef().child(NODE_POST);
         valueEventListener = databaseReference
-                .child(StringNodes.NODE_POST)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -170,7 +217,7 @@ public class TavernFragment extends Fragment
     @Override
     public void loadCharacterPostAmountFromFirebase() {
         DatabaseReference databaseReference = FirebaseHelper.getFirebaseRef();
-        databaseReference.child(StringNodes.NODE_POST_COUNT)
+        databaseReference.child(NODE_POST_COUNT)
                 .child(character.getId())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

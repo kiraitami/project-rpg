@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,13 +40,23 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.MyViewHolder
         Skill skill = skillList.get(position);
 
         holder.name.setText(skill.getName());
-        StringHelper.formatToDescription(skill.getDescription(), holder.description);
-        holder.damage.setText(skill.getDamage());
-        holder.cost.setText(skill.getCost());
+        holder.description.setText(skill.getDescription());
 
-        holder.itemView.setOnClickListener(view -> presenter.onItemClick(skill));
+        if (skill.getDamage() == null || skill.getDamage().trim().isEmpty())
+            holder.damage_layout.setVisibility(View.GONE);
+        else
+            holder.damage.setText(skill.getDamage());
+
+
+        if (skill.getCost() == null || skill.getCost().trim().isEmpty())
+            holder.cost_layout.setVisibility(View.GONE);
+        else
+            holder.cost.setText(skill.getCost());
+
 
         holder.favorite.setVisibility( skill.getFavorite() > 0 ? View.VISIBLE : View.GONE);
+
+        holder.itemView.setOnClickListener(view -> presenter.onItemClick(skill));
 
     }
 
@@ -57,6 +68,7 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.MyViewHolder
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, description, damage, cost;
+        LinearLayout damage_layout, cost_layout;
         ImageView favorite;
 
         MyViewHolder(@NonNull View itemView) {
@@ -67,6 +79,8 @@ public class SkillAdapter extends RecyclerView.Adapter<SkillAdapter.MyViewHolder
             damage = itemView.findViewById(R.id.skill_adapter_damage);
             cost = itemView.findViewById(R.id.skill_adapter_cost);
             favorite = itemView.findViewById(R.id.skill_adapter_favorite);
+            damage_layout = itemView.findViewById(R.id.adapter_skill_layout_damage);
+            cost_layout = itemView.findViewById(R.id.adapter_skill_layout_cost);
 
         }
     }

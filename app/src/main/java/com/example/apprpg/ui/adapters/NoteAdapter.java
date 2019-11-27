@@ -39,7 +39,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
         Note note = noteList.get(position);
 
         holder.name.setText(note.getName());
-        StringHelper.formatToDescription(note.getDescription(), holder.description);
+        holder.description.setText(note.getDescription());
 
         holder.itemView.setOnClickListener(view -> presenter.onNoteClick(note));
 

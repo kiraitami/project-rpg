@@ -40,7 +40,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         InventoryItem item = itemList.get(position);
 
         holder.name.setText(item.getName());
-        StringHelper.formatToDescription(item.getDescription(), holder.description);
+        holder.description.setText(item.getDescription());
 
 
         holder.itemView.setOnClickListener(view -> presenter.onItemClick(item));

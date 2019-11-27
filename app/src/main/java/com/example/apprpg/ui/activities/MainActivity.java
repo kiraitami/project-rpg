@@ -26,6 +26,7 @@ import com.example.apprpg.interfaces.MainActivityContract;
 import com.example.apprpg.models.Character;
 import com.example.apprpg.models.User;
 import com.example.apprpg.presenter.MainActivityPresenter;
+import com.example.apprpg.ui.fragments.AllCharactersFragment;
 import com.example.apprpg.utils.NetworkUtils;
 import com.example.apprpg.R;
 import com.example.apprpg.ui.fragments.AttributesFragment;
@@ -96,6 +97,8 @@ public class MainActivity extends AppCompatActivity
         fragmentBeforeMyCharacters = new TavernFragment();
         targetFragment = new TavernFragment();
         presenter.updateFragment(getResources().getString(R.string.default_fragment));
+
+
     }
 
     @Override
@@ -197,7 +200,8 @@ public class MainActivity extends AppCompatActivity
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else if ( !(targetFragment instanceof TavernFragment) ){
-            changeCurrentFragment(new TavernFragment());
+            targetFragment = new TavernFragment();
+            changeCurrentFragment(targetFragment);
         }
         else {
             exitDialog();
@@ -238,11 +242,6 @@ public class MainActivity extends AppCompatActivity
         nav_header_sub_title.setText(character.getBreed());
     }
 
-    private void setFragment(Fragment desiredFragment){
-        targetFragment = desiredFragment;
-        fragmentBeforeMyCharacters = targetFragment;
-    }
-
     private void exitDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getResources().getString(R.string.toast_exit_title))
@@ -255,6 +254,16 @@ public class MainActivity extends AppCompatActivity
         alertDialog.show();
     }
 
+
+    public void goToAllCharacters(){
+        setFragment(new AllCharactersFragment());
+        changeCurrentFragment(targetFragment);
+    }
+
+    private void setFragment(Fragment desiredFragment){
+        targetFragment = desiredFragment;
+        fragmentBeforeMyCharacters = targetFragment;
+    }
 
     @Override
     public void changeCurrentFragment(Fragment fragment){

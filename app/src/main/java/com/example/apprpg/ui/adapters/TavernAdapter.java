@@ -51,13 +51,16 @@ public class TavernAdapter extends RecyclerView.Adapter<TavernAdapter.MyViewHold
         Post post = postList.get(position);
 
         holder.post_title.setText(post.getTitle());
-        StringHelper.formatToDescription(post.getDescription(), holder.post_desc);
+
+        holder.post_desc.setText(post.getDescription());
+
         holder.character_name.setText(post.getCharacterName());
         holder.player_name.setText(post.getUserName());
         holder.likes_count.setText(String.valueOf(post.getLikersList().size()));
 
         requestManager.load(post.getImageUrl())
-                .thumbnail(0.2f)
+                .override(720, 450) //todo: test better performing
+                .thumbnail(0.1f)
                 .into(holder.post_image);
 
         requestManager.load(post.getCharacterPictureUrl())

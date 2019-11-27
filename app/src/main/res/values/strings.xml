@@ -1,7 +1,15 @@
 <resources>
-    <string name="app_name">RPG</string>
+    <string name="app_name">RPG Kiraitami</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="notification_commented_post">%1$s commented your %2$s post</string>
+    <string name="notification_new_post">%1$s made a new post</string>
+
+    <string name="snackbar_update_profile_images">Image changed successfully</string>
+    <string name="snackbar_update_profile_images_btn">Save</string>
 
 
     <string name="customactivityoncrash_error_activity_error_occurred_explanation">Our warriors weren\'t enough…</string>
@@ -25,12 +33,17 @@
         Kai Sa s attacks or Void Seeker Void Seeker can then rupture enemies with 4 Plasma,
         consuming them to deal 15% (+ 2.5% per 100 AP) of the target s missing health magic damage, capped at 400 against monsters.
         \n\n
-        Living Weapon: When reaching a certain amount of stat from items and stat growth, Kai Sa can evolve the related basic ability. 
+        Living Weapon: When reaching a certain amount of stat from items and stat growth, Kai Sa can evolve the related basic ability.
         This has a channel time of 2 seconds, and the upgrade is lost if the stat requirement is no longer met.</string>
+
+    <string name="base_key_pref" translatable="false">base_key</string>
+    <string name="character_names_key_pref" translatable="false">character_names_key_pref</string>
+    <string name="login_key_pref" translatable="false">login_pref</string>
 
     <!-- Firebase Node Strings -->
     <string name="user_object" translatable="false">user_object</string>
     <string name="character_object" translatable="false">character_object</string>
+    <string name="host_character_id" translatable="false">host_character_id</string>
     <string name="host_character_object" translatable="false">host_character_object</string>
     <string name="fragment_object" translatable="false">fragment_object</string>
     <string name="default_fragment" translatable="false">default_fragment</string>
@@ -40,6 +53,8 @@
     <string name="maho_object" translatable="false">maho_object</string>
     <string name="note_object" translatable="false">note_object</string>
     <string name="skill_object" translatable="false">skill_object</string>
+
+    <string name="image_key" translatable="false">image_key</string>
 
 
     <string name="nickname">Nickname</string>
@@ -76,12 +91,17 @@
     <string name="toast_cant_comment">Unfortunately you can\'t comment yet\nRequest that permission to your master</string>
     <string name="toast_add_image_empty_error">Select an Image</string>
     <string name="toast_no_image_error">Please, select an image before continue</string>
+    <string name="toast_trash_error">Filthy Trashes are not allowed here</string>
+    <!-- <string name="toast_character_not_found_error">I can\'t find %1$s\'s Ki</string> -->
+    <string name="toast_select_image_error">Failed to select image</string>
+    <string name="toast_load_image_error">Failed to load image</string>
     <string name="toast_update_image_successful">The Image was successfully updated</string>
     <string name="toast_recover_email_send_successful">Password Reset Email send successfully</string>
     <string name="toast_on_login_error">Loading data error\nPlease try again</string>
     <string name="toast_invalid_email">Invalid email</string>
 
     <string name="toast_kill_damage">Hahaha…\nIt was not a REAL Damage\nYou just testing the App… \nIsn\'t IT? &#128056;</string>
+    <string name="frog" translatable="false">&#128056; ...</string>
 
     <string name="toast_offline_title">Out of Energy…</string>
     <string name="toast_offline_msg">As well Spells needs Mana, we need Internet to work\nBe aware if you ignore this, errors and data loss can happen</string>
@@ -117,7 +137,7 @@
     <string name="level_updated_successful">Level updated successfully</string>
 
 
-    <string name="xp_history">XP History: %1$dXP</string>
+    <string name="xp_history">XP History:\nTotal: %1$d XP</string>
     <string name="current_xp">Current XP</string>
     <string name="xp_added_successful">XP added successfully</string>
     <string name="xp_added_failed">Failed to add XP</string>
@@ -140,6 +160,9 @@
 
     <string name="menu_edit_post">Edit post</string>
     <string name="menu_delete_post">Delete post</string>
+
+    <string name="menu_subscribe_post">New Post Notifications</string>
+    <string name="menu_all_characters">Show All Characters</string>
 
 
     <string name="alert_delete_post_title">Delete Post</string>
@@ -257,6 +280,7 @@
     <string name="powers">Specials</string>
     <string name="account">Account</string>
     <string name="my_characters">My Characters</string>
+    <string name="all_characters">All Characters</string>
     <string name="exit">Exit</string>
 
 
@@ -270,7 +294,7 @@
     <string name="dialog_mp_spent">Spent</string>
 
 
-    <string name="dialog_add_xp_title">Add Experience Points</string>
+    <string name="dialog_add_xp_title">Insert Experience Points</string>
     <string name="dialog_add_btn_add">Add</string>
     <string name="dialog_add_btn_subtract">Subtract</string>
 
@@ -319,6 +343,10 @@
     <string name="alert_version_error_title">Your App is out of date</string>
     <string name="alert_version_error_msg">Please, Install the newest application version</string>
     <string name="alert_version_error_positive">Sure!</string>
+    <string name="edit_bio"><u>Edit Biography</u></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
 </resources>
