@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_sekai"
     android:fitsSystemWindows="true"
     android:theme="@style/AppThemeTranslucentStatusBar"
-    tools:context="com.example.apprpg.ui.activities.FirstActivity">
+    tools:context="com.example.apprpg.ui.activities.FirstActivity"
+    android:background="@drawable/bg_default"
+    >
 
     <ImageView
         android:id="@+id/first_bg"

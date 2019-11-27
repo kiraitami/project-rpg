@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@drawable/bg_01"
+    android:background="@drawable/bg_default"
     android:fitsSystemWindows="true"
     android:theme="@style/AppThemeTranslucentStatusBar"
     tools:context="com.example.apprpg.ui.activities.LoginActivity">

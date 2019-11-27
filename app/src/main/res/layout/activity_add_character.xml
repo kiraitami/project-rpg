@@ -27,12 +27,12 @@
         android:id="@+id/bg_add_weapon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_boat" />
+        app:srcCompat="@drawable/bg_default" />
 
     <ScrollView
         android:alpha="0.96"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.apprpg.ui.activities.SkillDetailsActivity"
-    android:background="@drawable/bg_05"
+    android:background="@drawable/bg_default"
     android:fitsSystemWindows="true"
     >
 

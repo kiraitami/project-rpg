@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.apprpg.ui.activities.AddPostActivity"
-    android:background="@drawable/bg_boat"
+    android:background="@drawable/bg_default"
     android:fitsSystemWindows="true"
     android:theme="@style/AppThemeTranslucentStatusBar">
 
