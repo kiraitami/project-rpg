@@ -7,6 +7,25 @@ Create your characters and store their informations, items, weapons, spells, ski
 Also, it has a Tavern page, a kind of RPG Character's social media where you can post, like and comment
 
 
+### Some Screens Demo
+
+
+Attributes | Dice Roll | Experience
+------------ | ------------- | -------------
+<img src="demo/login-attributes-demo.gif" width="220" height="400"/> | <img src="demo/dice-demo.gif" width="220" height="400"/> | <img src="demo/experience-demo.gif" width="220" height="400"/>
+
+
+Biography | Inventory | Inventory
+------------ | ------------- | -------------
+<img src="demo/editing-bio-demo.gif" width="220" height="400"/> | <img src="demo/add-item-demo.gif" width="220" height="400"/> | <img src="demo/weapon-item-favorite-demo.gif" width="220" height="400"/> 
+
+
+Tavern | Visiting Profile | Characters
+------------ | ------------- | -------------
+<img src="demo/tavern-demo.gif" width="220" height="400"/> | <img src="demo/visit-profile-demo.gif" width="220" height="400"/> | <img src="demo/all-characters-demo.gif" width="220" height="400"/> 
+
+(All those shown images are only for demo purpose, you may replace them whenever you want)
+
 
 ## Getting Started
 
@@ -16,10 +35,9 @@ Then, enjoy it with your friends!
 
 The App has a default Firebase Project associated to it
 
-For a better experience and control, I recommend you replace with your own Firebase Project and custom everything as you wish
+For a better experience and control, I strongly recommend you replace with your own Firebase Project and custom everything as you wish
 
 The App was made with MVP architeture
-
 
 ### Prerequisites
 
@@ -31,7 +49,7 @@ The App was made with MVP architeture
 
 * Follow the Firebase implementation guide
 
-Then you can custom the nodes in class
+* Then you can custom the nodes in class
 
 ```java
 StringNodes.java
@@ -39,7 +57,7 @@ public static final String NODE_CHARACTER = "character";
 ```
 
 
-And also, change the path in each of model objects as you want
+* And also, change the path in each of model objects as you want
 ```java
 @Override
     public void saveInFirebase() {
@@ -53,22 +71,42 @@ And also, change the path in each of model objects as you want
     }
 ```
 
-To allow your users to post and comment don't forget to change the line to:
+* To allow your users to post and comment don't forget to change the line to:
 ```java
 this.canPost = true; //-- default: false
 ```
 
 
-Replace with your own background images changing the following drawable and similars
+* Replace with your own background images changing the following drawable
 
 ```
-\src\main\res\drawable\bg_01
+\src\main\res\drawable\bg_default
+```
+
+* To use the Notification feature you must implements Firebase Cloud Messaging, get your Authorization Key and set it in NotificationService interface:
+```java
+public interface NotificationService {
+
+    @Headers({
+           "Authorization:key=YOUR_KEY_HERE",
+           "Content-Type:application/json"
+    })
+    @POST("send")
+    Call<NotificationData>saveNotification(@Body NotificationData notificationData);
+}
 ```
 
 
-The Damage Calculator has a specific formula which is:
+Notification Strings:
+```xml
+<string name="notification_commented_post">%1$s commented your %2$s post</string>
+<string name="notification_new_post">%1$s made a new post</string>
+```
 
-Physical Damage:
+
+* The Damage Calculator has a specific formula (in Damage model class) which is:
+
+* Physical Damage:
 ```java
 	int restrictedConst = constitution;
         if (restrictedConst > 80)
@@ -86,7 +124,7 @@ Physical Damage:
         }
 ```
 
-Magic Damage:
+* Magic Damage:
 ```java
 	int restrictedMr = mr;
         if (restrictedMr > 60)
@@ -104,7 +142,7 @@ Magic Damage:
         }
 ```
 
-Hybrid Damage:
+* Hybrid Damage:
 ```java
 	double armorMr = (armor + mr)/2;
         int restrictedConst = constitution;
@@ -133,7 +171,7 @@ Hybrid Damage:
         }
 ```
 
-### Languages
+### Supported Languages
 
 * **English - US**
 * **Portuguese - BR**
@@ -146,6 +184,7 @@ Hybrid Damage:
 * **LikeButton** - [Joel Dean](https://github.com/jd-alexander)
 * **Custom Activity On Crash library** - [Eduard Ereza Martínez](https://github.com/Ereza)
 * **CircleMenu** - [Ramotion](https://github.com/Ramotion)
+* **Retrofit** - [Square](https://square.github.io/retrofit/)
 
 
 
