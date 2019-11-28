@@ -107,72 +107,9 @@ Notification Strings:
 ```
 
 
-* The Damage Calculator has a specific formula (in Damage model class) which is:
-
-* Physical Damage:
-```java
-	int restrictedConst = constitution;
-        if (restrictedConst > 80)
-            restrictedConst = 80;
-
-        int firstDamageLayer = (int) ((damage - armor) - (constitution /2));
-        double constPercentage = (1- (double) restrictedConst/100);
-
-        if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
-            return  (int) ( (firstDamageLayer * constPercentage) * modifierCalc );
-        }
-        else {
-            return (int) ( (firstDamageLayer * constPercentage) + modifier );
-        }
-```
-
-* Magic Damage:
-```java
-	int restrictedMr = mr;
-        if (restrictedMr > 60)
-            restrictedMr = 60;
-
-        int firstDamageLayer = (int) ((damage - mr) - (mr /2));
-        double mrPercentage = (1- (double) restrictedMr/100);
-
-        if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
-            return  (int) ( (firstDamageLayer * mrPercentage) * modifierCalc );
-        }
-        else {
-            return (int) ( (firstDamageLayer * mrPercentage) + modifier );
-        }
-```
-
-* Hybrid Damage:
-```java
-	double armorMr = (armor + mr)/2;
-        int restrictedConst = constitution;
-        int restrictedMr = mr;
-        int restrictedConsMR;
-
-        if (restrictedConst > 80)
-            restrictedConst = 80;
-
-        if (restrictedMr > 60)
-            restrictedMr = 60;
-
-        restrictedConsMR = (int)((restrictedConst + restrictedMr) /2);
+* The Damage Calculator has a specific formula, custom it in Damage.java class and match it with your own RPG rules
 
 
-        int firstDamageLayer = (int) ((damage - armorMr) - (constitution /4));
-        double consMRPercentage = (1- (double) restrictedConsMR/100);
-
-        if (isPercentage) {
-            double modifierCalc = (1 + ((double) modifier / 100));
-
-            return  (int) ( (firstDamageLayer * consMRPercentage) * modifierCalc );
-        }
-        else {
-            return (int) ( (firstDamageLayer * consMRPercentage) + modifier );
-        }
-```
 
 ### Supported Languages
 
