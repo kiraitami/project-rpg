@@ -24,7 +24,8 @@ Tavern | Visiting Profile | Characters
 ------------ | ------------- | -------------
 <img src="demo/tavern-demo.gif" width="220" height="400"/> | <img src="demo/visit-profile-demo.gif" width="220" height="400"/> | <img src="demo/all-characters-demo.gif" width="220" height="400"/> 
 
-(All those shown images are only for demo purpose, you may replace them whenever you want)
+>(All those shown images are only for demo purpose, you may replace them whenever you want)
+
 
 
 ## Getting Started
@@ -107,7 +108,7 @@ Notification Strings:
 ```
 
 
-* The Damage Calculator has a specific formula, custom it in Damage.java class and match it with your own RPG rules
+* The Damage Calculator has a specific formula, custom it in `Damage.java` class and match it with your own RPG rules
 
 
 
