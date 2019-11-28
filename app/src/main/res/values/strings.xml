@@ -91,7 +91,7 @@
     <string name="toast_cant_comment">Unfortunately you can\'t comment yet\nRequest that permission to your master</string>
     <string name="toast_add_image_empty_error">Select an Image</string>
     <string name="toast_no_image_error">Please, select an image before continue</string>
-    <string name="toast_trash_error">Filthy Trashes are not allowed here</string>
+    <string name="toast_trash_error">[...]</string>
     <!-- <string name="toast_character_not_found_error">I can\'t find %1$s\'s Ki</string> -->
     <string name="toast_select_image_error">Failed to select image</string>
     <string name="toast_load_image_error">Failed to load image</string>

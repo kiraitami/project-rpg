@@ -245,7 +245,7 @@
     <string name="toast_select_image_error">Erro ao selecionar imagem</string>
     <string name="toast_load_image_error">Erro ao carregar imagem</string>
     <string name="edit_bio"><u>Editar Biografia</u></string>
-    <string name="toast_trash_error">Isso aqui não é um aterro sanitário</string>
+    <string name="toast_trash_error">[...]</string>
     <string name="all_characters">Personagens</string>
     <string name="menu_all_characters">Mostrar Todos os Personagens</string>
 </resources>
