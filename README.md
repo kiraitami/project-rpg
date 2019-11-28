@@ -31,6 +31,8 @@ Tavern | Visiting Profile | Characters
 
 Download or clone the App
 
+You can install the RPG-DEMO.apk to test it
+
 Then, enjoy it with your friends!
 
 The App has a default Firebase Project associated to it
@@ -41,6 +43,7 @@ The App was made with MVP architeture
 
 ### Prerequisites
 
+* [Android Studio](https://developer.android.com/studio)
 * [Realtime Database](https://firebase.google.com/docs/database/android/start)
 * [Storage](https://firebase.google.com/docs/storage/android/start)
 
