@@ -86,7 +86,7 @@ this.canPost = true; //-- default: false
 \src\main\res\drawable\bg_default
 ```
 
-* To use the Notification feature you must implements Firebase Cloud Messaging, get your Authorization Key and set it in NotificationService interface:
+* To use the Notification feature, you must implement Firebase Cloud Messaging, get your Authorization Key and set it in NotificationService interface:
 ```java
 public interface NotificationService {
 
