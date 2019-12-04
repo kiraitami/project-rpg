@@ -13,8 +13,8 @@ public interface MahosContract {
         void showItems(List<Maho> mahoList);
         void onItemClick(Maho maho);
     }
-    interface MahoPresenter extends BasePresenterContract, RecyclerFragmentPresenterContract {
+    interface MahoPresenter extends BasePresenterContract, RecyclerFragmentPresenterContract{
         void onItemClick(Maho maho);
-        void loadFromFirebase(String characterId, MahosContract.MahoView view);
+        void loadFromFirebase(String characterId, MahosContract.MahoView view, boolean showOrdered);
     }
 }

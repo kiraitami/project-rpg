@@ -6,17 +6,17 @@ import android.widget.TextView;
 public class StringHelper {
 
     public static String formatToName(String s){
-        String after = s.trim().replaceAll("[^A-Za-z ]","");
+        String after = s.trim().replaceAll("[^A-Za-z áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ']","");
         return removeDoubleSpaces(after);
     }
 
     public static String formatToPostTitle(String s){
-        String after = s.trim().replaceAll("[^A-Za-z0-9 ?!.]","");
+        String after = s.trim().replaceAll("[^A-Za-z0-9 ?!.áàãâäéèêëíìîïóòõôöúùûüçÁÀÃÂÄÉÈÊËÍÌÎÏÓÒÕÖÔÚÙÛÜÇ']","");
         return removeDoubleSpaces(after);
     }
 
     public static String removeEmojis(String s){
-        String after = s.replaceAll("[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]","");
+        String after = s.replaceAll("[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s\\+\\-\\|]","");
         return removeDoubleSpaces(after);
     }
 

@@ -3,7 +3,7 @@ package com.example.apprpg.presenter;
 import com.example.apprpg.interfaces.AddItemContract;
 import com.example.apprpg.models.InventoryItem;
 
-import static com.example.apprpg.utils.StringHelper.formatToName;
+import static com.example.apprpg.utils.StringHelper.removeEmojis;
 
 public class AddItemPresenter 
         implements AddItemContract.AddItemPresenter {
@@ -20,7 +20,7 @@ public class AddItemPresenter
         view.onAddLoading();
         boolean isNewItem = item == null;
 
-        if (name.trim().isEmpty() || formatToName(name).isEmpty() || description.trim().isEmpty() || amount.trim().isEmpty()){
+        if (name.trim().isEmpty() || removeEmojis(name).isEmpty() || description.trim().isEmpty()){
             view.onEmptyFields();
         }
         else {
@@ -29,9 +29,9 @@ public class AddItemPresenter
             }
 
             item.setCharacterId(characterId);
-            item.setName(formatToName(name));
+            item.setName(removeEmojis(name));
             item.setDescription(description);
-            item.setAmount(Integer.parseInt(amount));
+            item.setAmount(amount.trim().isEmpty() ? 1 : Integer.parseInt(amount));
             item.setFavorite(0);
             item.saveInFirebase();
 

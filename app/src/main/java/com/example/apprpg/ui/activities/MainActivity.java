@@ -129,6 +129,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+    /*
+    Receiving and Updating User and Character Object across the Fragments
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

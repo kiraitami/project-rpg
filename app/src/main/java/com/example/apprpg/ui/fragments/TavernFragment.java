@@ -3,14 +3,6 @@ package com.example.apprpg.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,7 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
+import com.example.apprpg.R;
 import com.example.apprpg.interfaces.TavernContract;
 import com.example.apprpg.models.Character;
 import com.example.apprpg.models.Post;
@@ -30,10 +30,8 @@ import com.example.apprpg.presenter.TavernPresenter;
 import com.example.apprpg.ui.activities.AddPostActivity;
 import com.example.apprpg.ui.activities.MainActivity;
 import com.example.apprpg.ui.activities.PostDetailsActivity;
-import com.example.apprpg.utils.FirebaseHelper;
-import com.example.apprpg.utils.StringNodes;
-import com.example.apprpg.R;
 import com.example.apprpg.ui.adapters.TavernAdapter;
+import com.example.apprpg.utils.FirebaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -127,11 +125,13 @@ public class TavernFragment extends Fragment
         inflater.inflate(R.menu.menu_tavern, menu);
     }
 
+
     @Override
     public void onPrepareOptionsMenu(@NonNull Menu menu) {
         super.onPrepareOptionsMenu(menu);
         menu.getItem(0).setChecked(user.getEnablePostNotifications());
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

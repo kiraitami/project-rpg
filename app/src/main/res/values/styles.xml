@@ -23,6 +23,13 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <style name="AddObjectBackgroundBaseTheme" >
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@drawable/bg_left_corner_rounded</item>
+        <item name="android:alpha">0.94</item>
+        <item name="android:elevation">5dp</item>
+    </style>
 
     <style name="AdapterTitleTheme" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@android:color/black</item>
@@ -33,6 +40,8 @@
     </style>
 
     <style name="AdapterDescriptionTheme" parent="Widget.AppCompat.TextView">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lineSpacingExtra">2sp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginBottom">4dp</item>
         <item name="android:maxLines">3</item>
@@ -59,17 +68,32 @@
 
     <style name="BaseDetailsTextViewTheme" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="ProfileDescriptionTheme" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
     </style>
 
     <style name="DetailsValueTheme" parent="BaseDetailsTextViewTheme">
         <item name="android:maxLines">3</item>
         <item name="android:text">44</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
     <style name="DetailsDescriptionTheme" parent="BaseDetailsTextViewTheme">
-        <item name="android:maxLines">50</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:maxLines">80</item>
         <item name="android:autoLink">all</item>
         <item name="android:text">@string/description_test</item>
     </style>

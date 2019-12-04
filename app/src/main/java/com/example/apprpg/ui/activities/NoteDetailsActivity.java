@@ -21,6 +21,7 @@ import com.example.apprpg.models.Character;
 import com.example.apprpg.models.Note;
 import com.example.apprpg.models.User;
 import com.example.apprpg.utils.ScreenDimensHelper;
+import com.example.apprpg.utils.StringHelper;
 import com.example.apprpg.utils.StringNodes;
 import com.example.apprpg.R;
 
@@ -125,7 +126,7 @@ public class NoteDetailsActivity extends AppCompatActivity
     @Override
     public void showData() {
         toolbar.setTitle(note.getName());
-        description.setText(note.getDescription());
+        StringHelper.formatToDescription(note.getDescription(), description);
     }
 
     @Override

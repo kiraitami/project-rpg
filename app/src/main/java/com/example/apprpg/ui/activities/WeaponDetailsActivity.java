@@ -21,6 +21,7 @@ import com.example.apprpg.models.Character;
 import com.example.apprpg.models.User;
 import com.example.apprpg.models.Weapon;
 import com.example.apprpg.utils.ScreenDimensHelper;
+import com.example.apprpg.utils.StringHelper;
 import com.example.apprpg.utils.StringNodes;
 import com.example.apprpg.R;
 
@@ -126,7 +127,7 @@ public class WeaponDetailsActivity extends AppCompatActivity
     @Override
     public void showData() {
         toolbar.setTitle(weapon.getName());
-        description.setText(weapon.getDescription());
+        StringHelper.formatToDescription(weapon.getDescription(), description);
         damage.setText(weapon.getDamage());
         amount.setText(String.valueOf(weapon.getAmount()));
     }

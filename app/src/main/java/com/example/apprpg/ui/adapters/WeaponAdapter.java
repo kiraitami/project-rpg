@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,11 +41,17 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.MyViewHold
 
         holder.name.setText(weapon.getName());
         holder.description.setText(weapon.getDescription());
-        holder.damage.setText(weapon.getDamage());
+
+
+        if (weapon.getDamage() == null || weapon.getDamage().trim().isEmpty())
+            holder.damage_layout.setVisibility(View.GONE);
+        else
+            holder.damage.setText(weapon.getDamage());
 
         holder.itemView.setOnClickListener(view -> presenter.onWeaponClick(weapon));
 
         holder.favorite.setVisibility( weapon.getFavorite() > 0 ? View.VISIBLE : View.GONE);
+
 
     }
 
@@ -56,6 +63,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.MyViewHold
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, description, damage;
+        LinearLayout damage_layout;
         ImageView favorite;
 
         MyViewHolder(@NonNull View itemView) {
@@ -65,7 +73,7 @@ public class WeaponAdapter extends RecyclerView.Adapter<WeaponAdapter.MyViewHold
             description = itemView.findViewById(R.id.weapon_adapter_desc);
             damage = itemView.findViewById(R.id.weapon_adapter_damage);
             favorite = itemView.findViewById(R.id.weapon_adapter_favorite);
-
+            damage_layout = itemView.findViewById(R.id.adapter_weapon_layout_damage);
         }
     }
 }

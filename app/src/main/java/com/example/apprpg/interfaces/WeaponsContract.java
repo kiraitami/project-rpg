@@ -17,6 +17,6 @@ public interface WeaponsContract {
 
     interface WeaponsPresenter extends BasePresenterContract, RecyclerFragmentPresenterContract {
         void onWeaponClick(Weapon weapon);
-        void loadFromFirebase(String characterId, WeaponsContract.WeaponsView view);
+        void loadFromFirebase(String characterId, WeaponsContract.WeaponsView view, boolean showOrdered);
     }
 }

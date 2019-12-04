@@ -4,7 +4,6 @@ package com.example.apprpg.presenter;
 import androidx.annotation.NonNull;
 
 import com.example.apprpg.interfaces.WeaponsContract;
-import com.example.apprpg.interfaces.base.RecyclerFragmentPresenterContract;
 import com.example.apprpg.models.Weapon;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,12 +28,12 @@ public class WeaponsPresenter
     }
 
     @Override
-    public void loadFromFirebase(String characterId, WeaponsContract.WeaponsView view) {
+    public void loadFromFirebase(String characterId, WeaponsContract.WeaponsView view, boolean showOrdered) {
         view.onLoadingFromFirebase();
-        valueEventListener = RecyclerFragmentPresenterContract.databaseReference
+        databaseReference
                 .child(NODE_ARMORY)
                 .child(characterId)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         allWeaponsInFirebase.clear();
@@ -44,7 +43,12 @@ public class WeaponsPresenter
 
                         view.onLoadingFromFirebaseSuccess();
                         Collections.reverse(allWeaponsInFirebase);
-                        view.showWeapons(allWeaponsInFirebase);
+                        if (showOrdered) {
+                            orderByFavorite();
+                        }
+                        else {
+                            view.showWeapons(allWeaponsInFirebase);
+                        }
                     }
 
                     @Override
@@ -78,7 +82,6 @@ public class WeaponsPresenter
 
     @Override
     public void removeEventListener() {
-        RecyclerFragmentPresenterContract.databaseReference.removeEventListener(valueEventListener);
     }
 
 }

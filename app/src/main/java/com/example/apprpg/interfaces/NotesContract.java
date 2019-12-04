@@ -15,6 +15,6 @@ public interface NotesContract {
     }
     interface NotePresenter extends BasePresenterContract, RecyclerFragmentPresenterContract {
         void onNoteClick(Note note);
-        void loadFromFirebase(String characterId, NotesContract.NoteView view);
+        void loadFromFirebase(String characterId, NotesContract.NoteView view, boolean showOrdered);
     }
 }

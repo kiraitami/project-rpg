@@ -117,7 +117,7 @@
     <string name="alert_remove_btn">Sim, Remover</string>
     <string name="alert_remove_xp_msg">Tem certeza, meu Famígero? Isso não poderá ser desfeito</string>
     <string name="alert_remove_xp_title">Remover regístro de XP?</string>
-    <string name="alert_version_error_msg">Evoluir é necessário, meu Rei!\nInstale a nova versão antes de prossegir</string>
+    <string name="alert_version_error_msg">Evoluir é necessário, meu Rei!\nInstale a nova versão antes de prossegir\n\n%1$s</string>
     <string name="alert_version_error_positive">Entendido!</string>
     <string name="alert_version_error_title">Defasado…</string>
     <string name="customactivityoncrash_error_activity_close_app">Desistir</string>
@@ -248,4 +248,5 @@
     <string name="toast_trash_error">[...]</string>
     <string name="all_characters">Personagens</string>
     <string name="menu_all_characters">Mostrar Todos os Personagens</string>
+    <string name="maho_deleted_successful">Magia excluída com sucesso</string>
 </resources>

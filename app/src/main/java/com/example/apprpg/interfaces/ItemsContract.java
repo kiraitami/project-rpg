@@ -17,6 +17,6 @@ public interface ItemsContract {
 
     interface ItemsPresenter extends BasePresenterContract, RecyclerFragmentPresenterContract {
         void onItemClick(InventoryItem item);
-        void loadFromFirebase(String characterId, ItemsContract.ItemsView view);
+        void loadFromFirebase(String characterId, ItemsContract.ItemsView view, boolean showOrdered);
     }
 }

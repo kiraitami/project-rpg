@@ -3,9 +3,7 @@ package com.example.apprpg.presenter;
 
 import androidx.annotation.NonNull;
 
-
 import com.example.apprpg.interfaces.ItemsContract;
-import com.example.apprpg.interfaces.base.RecyclerFragmentPresenterContract;
 import com.example.apprpg.models.InventoryItem;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,12 +30,12 @@ public class ItemsPresenter
     }
 
     @Override
-    public void loadFromFirebase(String characterId, ItemsContract.ItemsView view) {
+    public void loadFromFirebase(String characterId, ItemsContract.ItemsView view, boolean showOrdered) {
         view.onLoadingFromFirebase();
-        valueEventListener = RecyclerFragmentPresenterContract.databaseReference
+        databaseReference
                 .child(NODE_INVENTORY)
                 .child(characterId)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         allItemsInFirebase.clear();
@@ -47,7 +45,12 @@ public class ItemsPresenter
 
                         view.onLoadingFromFirebaseSuccess();
                         Collections.reverse(allItemsInFirebase);
-                        view.showItems(allItemsInFirebase);
+                        if (showOrdered){
+                            orderByFavorite();
+                        }
+                        else {
+                            view.showItems(allItemsInFirebase);
+                        }
                     }
 
                     @Override
@@ -81,7 +84,6 @@ public class ItemsPresenter
 
     @Override
     public void removeEventListener() {
-        RecyclerFragmentPresenterContract.databaseReference.removeEventListener(valueEventListener);
     }
 
 }

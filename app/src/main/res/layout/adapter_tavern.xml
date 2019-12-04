@@ -32,13 +32,14 @@
                 android:id="@+id/tavern_adapter_post_title"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:elevation="5dp"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:text="Post title"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
+                android:ellipsize="end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +65,7 @@
             android:background="@android:color/white"
             android:elevation="2dp"
             android:orientation="vertical"
-            android:paddingStart="8dp"
-            android:paddingTop="2dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="8dp">
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/tavern_adapter_post_desc"
@@ -76,15 +74,16 @@
                 android:maxLines="4"
                 android:text="@string/description_test"
                 android:textColor="@android:color/black"
+                android:ellipsize="end"
                 android:textSize="17sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
@@ -105,9 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"
                     android:maxLines="1"
-                    android:text="Character Name"
                     android:textColor="@android:color/black"
                     android:textSize="18sp" />
 
@@ -116,30 +113,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:text="Player Name" />
+                    android:maxLines="1" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="right"
+                android:gravity="end"
                 android:orientation="horizontal">
 
-
-                <com.like.LikeButton
-                    android:id="@+id/tavern_adapter_button_like"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="0"
-                    app:icon_size="20dp"
-                    app:icon_type="heart"
-                    app:like_drawable="@drawable/ic_favorite"
-                    app:unlike_drawable="@drawable/ic_favorite_border" />
 
                 <TextView
                     android:id="@+id/tavern_adapter_tv_likes_count"
@@ -147,11 +130,19 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginEnd="4dp"
-                    android:layout_weight="0"
                     android:gravity="center"
                     android:maxLength="2"
-                    android:text="4"
                     android:textSize="18sp" />
+
+                <com.like.LikeButton
+                    android:id="@+id/tavern_adapter_button_like"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    app:icon_size="20dp"
+                    app:icon_type="heart"
+                    app:like_drawable="@drawable/ic_favorite"
+                    app:unlike_drawable="@drawable/ic_favorite_border" />
 
             </LinearLayout>
 

@@ -3,7 +3,6 @@ package com.example.apprpg.presenter;
 
 import androidx.annotation.NonNull;
 
-
 import com.example.apprpg.interfaces.SkillsContract;
 import com.example.apprpg.models.Skill;
 import com.google.firebase.database.DataSnapshot;
@@ -31,12 +30,12 @@ public class SkillsPresenter
     }
 
     @Override
-    public void loadFromFirebase(String characterId, SkillsContract.SkillsView view) {
+    public void loadFromFirebase(String characterId, SkillsContract.SkillsView view, boolean showOrdered) {
         view.onLoadingFromFirebase();
-        valueEventListener = databaseReference
+        databaseReference
                 .child(NODE_SKILL)
                 .child(characterId)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         allSkillsInFirebase.clear();
@@ -46,7 +45,12 @@ public class SkillsPresenter
 
                         view.onLoadingFromFirebaseSuccess();
                         Collections.reverse(allSkillsInFirebase);
-                        view.showItems(allSkillsInFirebase);
+                        if (showOrdered) {
+                            orderByFavorite();
+                        }
+                        else {
+                            view.showItems(allSkillsInFirebase);
+                        }
                     }
 
                     @Override
@@ -80,7 +84,6 @@ public class SkillsPresenter
 
     @Override
     public void removeEventListener() {
-        databaseReference.removeEventListener(valueEventListener);
     }
 
 }

@@ -42,7 +42,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         holder.name.setText(item.getName());
         holder.description.setText(item.getDescription());
 
-
         holder.itemView.setOnClickListener(view -> presenter.onItemClick(item));
 
         holder.favorite.setVisibility( item.getFavorite() > 0 ? View.VISIBLE : View.GONE );

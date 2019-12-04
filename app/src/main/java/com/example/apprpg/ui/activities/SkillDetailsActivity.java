@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +26,15 @@ import com.example.apprpg.utils.ScreenDimensHelper;
 import com.example.apprpg.utils.StringNodes;
 import com.example.apprpg.R;
 
+import static com.example.apprpg.utils.StringHelper.formatToDescription;
+
 
 public class SkillDetailsActivity extends AppCompatActivity
         implements SkillDetailsContract.SkillDetailsView {
 
 
     private TextView description, damage, cost, price, cooldown;
+    private LinearLayout damage_layout, cost_layout, price_layout, cooldown_layout;
     private ViewGroup content_layout;
     private Toolbar toolbar;
 
@@ -119,9 +124,13 @@ public class SkillDetailsActivity extends AppCompatActivity
     public void setViewsById() {
         description = findViewById(R.id.skill_details_description);
         damage = findViewById(R.id.skill_details_damage);
+        damage_layout = findViewById(R.id.skill_details_damage_layout);
         cost = findViewById(R.id.skill_details_cost);
+        cost_layout = findViewById(R.id.skill_details_cost_layout);
         price = findViewById(R.id.skill_details_price);
+        price_layout = findViewById(R.id.skill_details_price_layout);
         cooldown = findViewById(R.id.skill_details_cooldown);
+        cooldown_layout = findViewById(R.id.skill_details_cooldown_layout);
         content_layout = findViewById(R.id.linear_layout_skill_details);
         toolbar = findViewById(R.id.toolbar_skill_details);
     }
@@ -129,11 +138,18 @@ public class SkillDetailsActivity extends AppCompatActivity
     @Override
     public void showData() {
         toolbar.setTitle(skill.getName());
-        description.setText(skill.getDescription());
-        damage.setText(skill.getDamage());
-        cost.setText(skill.getCost());
-        price.setText(skill.getPrice());
-        cooldown.setText(skill.getCooldown());
+        formatToDescription(skill.getDescription(), description);
+        hideLayoutIfEmptyValue(skill.getDamage(), damage, damage_layout);
+        hideLayoutIfEmptyValue(skill.getCost(), cost, cost_layout);
+        hideLayoutIfEmptyValue(skill.getPrice(), price, price_layout);
+        hideLayoutIfEmptyValue(skill.getCooldown(), cooldown, cooldown_layout);
+    }
+
+    private void hideLayoutIfEmptyValue(String value, TextView textView , LinearLayout layout){
+        if (value == null || value.trim().isEmpty())
+            layout.setVisibility(View.GONE);
+        else
+            textView.setText(value);
     }
 
     @Override

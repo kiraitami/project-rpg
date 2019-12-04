@@ -16,6 +16,6 @@ public interface SkillsContract {
 
     interface SkillsPresenter extends BasePresenterContract, RecyclerFragmentPresenterContract {
         void onItemClick(Skill skill);
-        void loadFromFirebase(String characterId, SkillsContract.SkillsView view);
+        void loadFromFirebase(String characterId, SkillsContract.SkillsView view, boolean showOrdered);
     }
 }

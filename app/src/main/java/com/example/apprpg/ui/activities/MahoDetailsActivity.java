@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +33,7 @@ public class MahoDetailsActivity extends AppCompatActivity
 
 
     private TextView description, damage, cost, difficulty;
+    private LinearLayout damage_layout, cost_layout, difficulty_layout;
     private ViewGroup content_layout;
     private Toolbar toolbar;
 
@@ -120,8 +123,11 @@ public class MahoDetailsActivity extends AppCompatActivity
     public void setViewsById() {
         description = findViewById(R.id.maho_details_description);
         damage = findViewById(R.id.maho_details_damage);
+        damage_layout = findViewById(R.id.maho_details_damage_layout);
         cost = findViewById(R.id.maho_details_cost);
+        cost_layout = findViewById(R.id.maho_details_cost_layout);
         difficulty = findViewById(R.id.maho_details_difficulty);
+        difficulty_layout = findViewById(R.id.maho_details_difficulty_layout);
         content_layout = findViewById(R.id.linear_layout_maho_details);
         toolbar = findViewById(R.id.toolbar_maho_details);
     }
@@ -130,9 +136,17 @@ public class MahoDetailsActivity extends AppCompatActivity
     public void showData() {
         toolbar.setTitle(maho.getName());
         StringHelper.formatToDescription(maho.getDescription(), description);
-        damage.setText(maho.getDamage());
         cost.setText(maho.getCost());
-        difficulty.setText(maho.getDifficulty());
+        hideLayoutIfEmptyValue(maho.getCost(), cost, cost_layout);
+        hideLayoutIfEmptyValue(maho.getDamage(), damage, damage_layout);
+        hideLayoutIfEmptyValue(maho.getDifficulty(), difficulty, difficulty_layout);
+    }
+
+    private void hideLayoutIfEmptyValue(String value, TextView textView ,LinearLayout layout){
+        if (value == null || value.trim().isEmpty())
+            layout.setVisibility(View.GONE);
+        else
+            textView.setText(value);
     }
 
     @Override
@@ -174,7 +188,7 @@ public class MahoDetailsActivity extends AppCompatActivity
                 .setPositiveButton(getResources().getString(R.string.alert_positive_button_delete), (dialogInterface, i) -> {
                     maho.deleteFromFirebase();
                     maho = null;
-                    Toast.makeText(this, getResources().getString(R.string.skill_deleted_successful), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getResources().getString(R.string.maho_deleted_successful), Toast.LENGTH_SHORT).show();
                     exitWithAnimation();
                 })
                 .setNegativeButton(getResources().getString(R.string.alert_negative_button_delete), null)

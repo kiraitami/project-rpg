@@ -31,15 +31,10 @@
         app:srcCompat="@drawable/bg_default" />
 
     <LinearLayout
-        android:alpha="0.96"
         android:id="@+id/linear_layout_add_maho"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/white"
-        android:elevation="5dp"
+        style="@style/AddObjectBackgroundBaseTheme"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/guideline3"

@@ -94,8 +94,9 @@ public class Character
         this.armor = 2;
         this.magicResist = 2;
         this.attributeList = new ArrayList<>();
+        //Add Constitution as default attribute due Damage Calculator prerequisite
         this.attributeList.add(0, new CharacterAttribute(PROVISIONAL_CONST, this.constitution) );
-        this.canPost = false;
+        this.canPost = true;
     }
     
     public void recoverHp(int recoverValue){

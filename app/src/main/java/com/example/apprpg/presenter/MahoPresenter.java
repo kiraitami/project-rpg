@@ -3,7 +3,6 @@ package com.example.apprpg.presenter;
 
 import androidx.annotation.NonNull;
 
-
 import com.example.apprpg.interfaces.MahosContract;
 import com.example.apprpg.models.Maho;
 import com.google.firebase.database.DataSnapshot;
@@ -31,12 +30,12 @@ public class MahoPresenter
     }
 
     @Override
-    public void loadFromFirebase(String characterId, MahosContract.MahoView view) {
+    public void loadFromFirebase(String characterId, MahosContract.MahoView view, boolean showOrdered) {
         view.onLoadingFromFirebase();
-        valueEventListener = databaseReference
+        databaseReference
                 .child(NODE_MAHO)
                 .child(characterId)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         allMahosInFirebase.clear();
@@ -46,7 +45,12 @@ public class MahoPresenter
 
                         view.onLoadingFromFirebaseSuccess();
                         Collections.reverse(allMahosInFirebase);
-                        view.showItems(allMahosInFirebase);
+                        if (showOrdered) {
+                            orderByFavorite();
+                        }
+                        else {
+                            view.showItems(allMahosInFirebase);
+                        }
                     }
 
                     @Override
@@ -80,7 +84,6 @@ public class MahoPresenter
 
     @Override
     public void removeEventListener() {
-        databaseReference.removeEventListener(valueEventListener);
     }
 
 }

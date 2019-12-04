@@ -1,13 +1,7 @@
 package com.example.apprpg.ui.activities;
 
-
-/*
-11-2019
-
-Made by L
-This is my first App and I hope you enjoy it
- */
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,18 +9,43 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
+import com.example.apprpg.BuildConfig;
 import com.example.apprpg.R;
+import com.example.apprpg.models.VersionControl;
+import com.example.apprpg.utils.FirebaseHelper;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
+
+import java.util.Objects;
 
 import cat.ereza.customactivityoncrash.config.CaocConfig;
 
+import static com.example.apprpg.utils.StringNodes.NODE_VERSION_CONTROL;
+
+
+/*
+
+Made by Gabriel "L" Kuniyoshi
+~November-2019
+
+This is my first App and I hope you enjoy it
+
+*/
+
 public class FirstActivity extends AppCompatActivity {
 
-    private DatabaseReference databaseReference;
+    private VersionControl versionControl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +54,15 @@ public class FirstActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        /*
+        // Set custom activity on crash
+        //There you can get the details if app crashes
         CaocConfig.Builder.create()
                 .trackActivities(true)
                 .restartActivity(FirstActivity.class)
                 .errorDrawable(R.drawable.ic_very_dissatisfied_240dp)
                 .apply();
-*/
-       // validateVersion();
-        goToLoginActivity();
+
+        validateVersion();
     }
 
     @Override
@@ -53,7 +72,12 @@ public class FirstActivity extends AppCompatActivity {
 
     private void validateVersion(){
         /*
-        databaseReference = FirebaseHelper.getFirebaseRef().child(StringNodes.NODE_VERSION_CONTROL);
+        Search newest version data in Firebase
+         * Version number
+         * Newest version download link
+         * If user can login in app even using an outdated installed version
+        */
+        DatabaseReference databaseReference = FirebaseHelper.getFirebaseRef().child(NODE_VERSION_CONTROL);
         databaseReference.runTransaction(new Transaction.Handler() {
             @NonNull
             @Override
@@ -64,10 +88,13 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, boolean b, @Nullable DataSnapshot dataSnapshot) {
                 if (b && dataSnapshot != null) {
-                    long versionInFireBase = (long) dataSnapshot.getValue();
-                    if (versionInFireBase == 0 || versionInFireBase > BuildConfig.VERSION_CODE ) {
-                        exit();
-                    } else {
+                    versionControl = dataSnapshot.getValue(VersionControl.class);
+
+                    if ( versionControl != null &&
+                       ( versionControl.getVersionNumber() == 0 || versionControl.getVersionNumber() > BuildConfig.VERSION_CODE ) ) {
+                        showOutDatedDialog();
+                    }
+                    else {
                         goToLoginActivity();
                     }
                 }
@@ -75,11 +102,11 @@ public class FirstActivity extends AppCompatActivity {
                     Toast.makeText(FirstActivity.this, databaseError.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 else {
-                    exit();
+                    showOutDatedDialog();
                 }
             }
         });
-        */
+
     }
 
     private void goToLoginActivity(){
@@ -95,15 +122,27 @@ public class FirstActivity extends AppCompatActivity {
         });
     }
 
-    private void exit(){
+    private void showOutDatedDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle(getResources().getString(R.string.alert_version_error_title))
-                .setMessage(getResources().getString(R.string.alert_version_error_msg))
-                .setCancelable(false)
-                .setPositiveButton(getResources().getString(R.string.alert_version_error_positive), (dialogInterface, i) -> finishAndRemoveTask());
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_deprecated_version, null);
+        TextView tv_dialog = dialogView.findViewById(R.id.alert_version_error_body);
+        tv_dialog.setText(getResources().getString(R.string.alert_version_error_msg, versionControl.getNewestVersionLink()));
+
+        builder.setView(dialogView)
+                .setCancelable(true)
+                .setOnDismissListener(dialogInterface -> {
+                    if (versionControl.getAllowOutDatedLogin()){
+                        goToLoginActivity();
+                    }
+                    else {
+                        finishAndRemoveTask();
+                    }
+                });
 
         AlertDialog alertDialog = builder.create();
+        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
         alertDialog.show();
     }
 }

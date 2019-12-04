@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,14 @@ public class LoginActivity extends AppCompatActivity
         setClickListenersEvents();
 
         loginPresenter = new LoginPresenter(this);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.base_key_pref),MODE_PRIVATE);
+        String savedEmail = sharedPreferences.getString(getResources().getString(R.string.login_key_pref),null);
+        input_email_login.setText(savedEmail);
     }
 
     @Override
@@ -282,6 +291,12 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void loginSuccessful(User user, Character character) {
+        //remember email in shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences(getResources().getString(R.string.base_key_pref),MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getResources().getString(R.string.login_key_pref), user.getEmail());
+        editor.apply();
+
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra(getResources().getString(R.string.user_object), user);
         intent.putExtra(getResources().getString(R.string.character_object), character);

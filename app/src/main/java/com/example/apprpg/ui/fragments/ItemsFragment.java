@@ -2,14 +2,8 @@ package com.example.apprpg.ui.fragments;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,18 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.apprpg.interfaces.ItemsContract;
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.apprpg.models.Character;
+import com.example.apprpg.R;
+import com.example.apprpg.interfaces.ItemsContract;
 import com.example.apprpg.models.InventoryItem;
 import com.example.apprpg.models.User;
 import com.example.apprpg.presenter.ItemsPresenter;
 import com.example.apprpg.ui.activities.AddItemActivity;
 import com.example.apprpg.ui.activities.ItemDetailsActivity;
-import com.example.apprpg.R;
 import com.example.apprpg.ui.adapters.ItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.Objects;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +51,8 @@ public class ItemsFragment extends Fragment
     private Character character;
 
     private ItemsPresenter presenter;
+
+    private boolean orderByFavorite;
 
     public ItemsFragment() {
         // Required empty public constructor
@@ -71,17 +76,28 @@ public class ItemsFragment extends Fragment
         setHasOptionsMenu(true);
         onRecyclerScroll();
 
-        presenter.loadFromFirebase(character.getId(), this);
+        SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(getResources().getString(R.string.base_key_pref),MODE_PRIVATE);
+        orderByFavorite = sharedPreferences.getBoolean(getResources().getString(R.string.order_by_favorites_item_key),false);
 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.loadFromFirebase(character.getId(), this, orderByFavorite);
+    }
+
+    @Override
+    public void onPause() {
+        saveOrderByFavorites();
+        super.onPause();
+    }
 
     @Override
     public void onDetach() {
         recyclerView.setAdapter(null);
         recyclerView = null;
-        presenter.removeEventListener();
         presenter.onDestroyView();
         presenter = null;
         super.onDetach();
@@ -93,6 +109,11 @@ public class ItemsFragment extends Fragment
         inflater.inflate(R.menu.menu_search_main, menu);
     }
 
+    @Override
+    public void onPrepareOptionsMenu(@NonNull Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.getItem(0).setChecked(orderByFavorite);
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -104,10 +125,18 @@ public class ItemsFragment extends Fragment
                 else {
                     presenter.orderByFavorite();
                 }
-                item.setChecked(!item.isChecked());
+                orderByFavorite = !item.isChecked();
+                item.setChecked(orderByFavorite);
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void saveOrderByFavorites(){
+        SharedPreferences sharedPreferences = Objects.requireNonNull(getActivity()).getSharedPreferences(getResources().getString(R.string.base_key_pref), MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(getResources().getString(R.string.order_by_favorites_item_key), orderByFavorite);
+        editor.apply();
     }
 
     @Override

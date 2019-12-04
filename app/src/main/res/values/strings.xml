@@ -39,6 +39,11 @@
     <string name="base_key_pref" translatable="false">base_key</string>
     <string name="character_names_key_pref" translatable="false">character_names_key_pref</string>
     <string name="login_key_pref" translatable="false">login_pref</string>
+    <string name="order_by_favorites_item_key" translatable="false">order_by_favorites_items</string>
+    <string name="order_by_favorites_maho_key" translatable="false">order_by_favorites_maho</string>
+    <string name="order_by_favorites_notes_key" translatable="false">order_by_favorites_notes</string>
+    <string name="order_by_favorites_skills_key" translatable="false">order_by_favorites_skills</string>
+    <string name="order_by_favorites_weapons_key" translatable="false">order_by_favorites_weapons</string>
 
     <!-- Firebase Node Strings -->
     <string name="user_object" translatable="false">user_object</string>
@@ -129,6 +134,7 @@
     <string name="skill_deleted_successful">Skill deleted successfully</string>
     <string name="skill_edited_successful">I hope it was a buff…</string>
     <string name="maho_created_successful">Mahō created successfully</string>
+    <string name="maho_deleted_successful">Mahō deleted successfully</string>
     <string name="maho_edited_successful">I hope it was a buff…</string>
     <string name="note_created_successful">Note created successfully</string>
     <string name="note_deleted_successful">Note deleted successfully</string>
@@ -341,7 +347,7 @@
 
 
     <string name="alert_version_error_title">Your App is out of date</string>
-    <string name="alert_version_error_msg">Please, Install the newest application version</string>
+    <string name="alert_version_error_msg">Please, Install the newest application version\nYou can download it at:\n\n%1$s</string>
     <string name="alert_version_error_positive">Sure!</string>
     <string name="edit_bio"><u>Edit Biography</u></string>
 

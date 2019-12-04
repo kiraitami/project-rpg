@@ -3,7 +3,6 @@ package com.example.apprpg.presenter;
 
 import androidx.annotation.NonNull;
 
-
 import com.example.apprpg.interfaces.NotesContract;
 import com.example.apprpg.models.Note;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +20,6 @@ public class NotesPresenter
 
 
     private NotesContract.NoteView view;
-    private ValueEventListener valueEventListener;
     private List<Note> allNotesInFirebase = new ArrayList<>();
 
     public NotesPresenter(NotesContract.NoteView view) {
@@ -29,12 +27,12 @@ public class NotesPresenter
     }
 
     @Override
-    public void loadFromFirebase(String characterId, NotesContract.NoteView view) {
+    public void loadFromFirebase(String characterId, NotesContract.NoteView view, boolean showOrdered) {
         view.onLoadingFromFirebase();
-        valueEventListener = databaseReference
+        databaseReference
                 .child(NODE_NOTES)
                 .child(characterId)
-                .addValueEventListener(new ValueEventListener() {
+                .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         allNotesInFirebase.clear();
@@ -44,7 +42,12 @@ public class NotesPresenter
 
                         view.onLoadingFromFirebaseSuccess();
                         Collections.reverse(allNotesInFirebase);
-                        view.showNote(allNotesInFirebase);
+                        if (showOrdered) {
+                            orderByFavorite();
+                        }
+                        else {
+                            view.showNote(allNotesInFirebase);
+                        }
                     }
 
                     @Override
@@ -78,7 +81,6 @@ public class NotesPresenter
 
     @Override
     public void removeEventListener() {
-        databaseReference.removeEventListener(valueEventListener);
     }
 
 }

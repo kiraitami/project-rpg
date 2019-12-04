@@ -41,7 +41,6 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
 
         holder.name.setText(maho.getName());
         holder.description.setText(maho.getDescription());
-        holder.cost.setText(maho.getCost());
 
         if (maho.getDamage() == null || maho.getDamage().trim().isEmpty())
             holder.difficulty_layout.setVisibility(View.GONE);
@@ -53,8 +52,15 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
         else
             holder.damage.setText(maho.getDamage());
 
+        if (maho.getCost() == null || maho.getCost().trim().isEmpty())
+            holder.cost_layout.setVisibility(View.GONE);
+        else
+            holder.cost.setText(maho.getCost());
+
 
         holder.favorite.setVisibility( maho.getFavorite() > 0 ? View.VISIBLE : View.GONE);
+
+        holder.itemView.setOnClickListener(view -> presenter.onItemClick(maho));
 
     }
 
@@ -66,7 +72,7 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, description, damage, cost, difficulty;
-        LinearLayout damage_layout, difficulty_layout;
+        LinearLayout damage_layout, difficulty_layout, cost_layout;
         ImageView favorite;
 
         MyViewHolder(@NonNull View itemView) {
@@ -80,6 +86,7 @@ public class MahoAdapter extends RecyclerView.Adapter<MahoAdapter.MyViewHolder> 
             favorite = itemView.findViewById(R.id.maho_adapter_favorite);
             damage_layout = itemView.findViewById(R.id.adapter_maho_layout_damage);
             difficulty_layout = itemView.findViewById(R.id.adapter_maho_layout_difficulty);
+            cost_layout = itemView.findViewById(R.id.adapter_maho_layout_cost);
 
         }
     }

@@ -21,9 +21,7 @@ public class AddWeaponPresenter
         boolean isNewWeapon = weapon == null;
 
         if (name.trim().isEmpty() || StringHelper.removeEmojis(name).isEmpty()
-                || description.trim().isEmpty()
-                || damage.trim().isEmpty() || StringHelper.removeEmojis(damage).isEmpty()
-                || amount.trim().isEmpty()){
+                || description.trim().isEmpty()){
             view.onEmptyFields();
         }
         else {
@@ -34,8 +32,8 @@ public class AddWeaponPresenter
             weapon.setCharacterId(character.getId());
             weapon.setName(StringHelper.removeEmojis(name));
             weapon.setDescription(description);
-            weapon.setDamage(StringHelper.removeEmojis(damage));
-            weapon.setAmount(Integer.parseInt(amount));
+            weapon.setDamage(damage.trim().isEmpty() ? null : StringHelper.removeEmojis(damage.trim()));
+            weapon.setAmount(amount.trim().isEmpty() ? 1 : Integer.parseInt(amount));
             weapon.setFavorite(0);
             weapon.saveInFirebase();
 

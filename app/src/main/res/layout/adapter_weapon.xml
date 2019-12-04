@@ -44,6 +44,7 @@
             style="@style/AdapterDescriptionTheme" />
 
         <LinearLayout
+            android:id="@+id/adapter_weapon_layout_damage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">

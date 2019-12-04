@@ -14,13 +14,9 @@
 
     <ScrollView
         android:id="@+id/linear_layout_login"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/AddObjectBackgroundBaseTheme"
         android:clipToPadding="false"
         android:paddingBottom="200dp"
-        android:background="@android:color/white"
-        android:elevation="5dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3_login"
@@ -118,12 +114,9 @@
 
     <ScrollView
         android:id="@+id/linear_layout_register"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/AddObjectBackgroundBaseTheme"
         android:clipToPadding="false"
         android:paddingBottom="200dp"
-        android:background="@android:color/white"
-        android:elevation="5dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline2_login"
         app:layout_constraintEnd_toEndOf="parent"

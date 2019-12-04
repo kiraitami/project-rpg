@@ -22,9 +22,7 @@ public class AddMahoPresenter implements AddMahoContract.AddMahoPresenter {
         boolean isNewMaho = maho == null;
 
         if (name.trim().isEmpty() || removeEmojis(name).isEmpty()
-                ||description.trim().isEmpty()
-                || cost.trim().isEmpty() || removeEmojis(cost.trim()).isEmpty()
-        ){
+                ||description.trim().isEmpty() ){
             view.onEmptyFields();
         }
         else {
@@ -35,9 +33,9 @@ public class AddMahoPresenter implements AddMahoContract.AddMahoPresenter {
             maho.setCharacterId(characterId);
             maho.setName(removeEmojis(name));
             maho.setDescription(removeEmojis(description));
-            maho.setDamage(removeEmojis(damage).trim().isEmpty() ? removeEmojis(damage).trim() : null);
-            maho.setDifficulty(removeEmojis(difficulty).trim().isEmpty() ? removeEmojis(difficulty).trim() : null);
-            maho.setCost(removeEmojis(cost).trim());
+            maho.setDamage(removeEmojis(damage).trim().isEmpty() ? null : removeEmojis(damage).trim() );
+            maho.setDifficulty(removeEmojis(difficulty).trim().isEmpty() ? null : removeEmojis(difficulty).trim());
+            maho.setCost(cost.trim().isEmpty()? null : removeEmojis(cost).trim());
             maho.setFavorite(0);
             maho.saveInFirebase();
 

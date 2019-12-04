@@ -52,19 +52,26 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
         holder.likes_count.setText(String.valueOf(comment.getLikersList().size()));
         holder.character_name.setText(comment.getCharacterName());
         holder.player_name.setText(comment.getUserName());
-        StringHelper.formatToDescription(comment.getBody(), holder.comment);
+        holder.comment.setText(comment.getBody());
         holder.date.setText(comment.getPublicationDate().formatMyDateToString("HH:mm\ndd/MM/yyy"));
+
 
         holder.btn_like.setLiked( comment.getLikersList().contains(visitorName) );
 
         holder.delete_comment.setVisibility( visitorName.equals(comment.getCharacterName()) ? View.VISIBLE : View.GONE );
 
-        holder.delete_comment.setOnClickListener(view -> {
+        holder.delete_comment.setOnLongClickListener(view -> {
             comment.deleteFromFirebase();
             notifyItemRemoved(position);
+            return false;
         });
 
         holder.profile_picture.setOnClickListener(view -> postDetailsView.visitDialog(comment.getCharacterId(), comment.getCharacterName()));
+
+        holder.itemView.setOnLongClickListener(view -> {
+            postDetailsView.showLikersDialog(comment.getLikersList());
+            return false;
+        });
 
         holder.btn_like.setOnLikeListener(new OnLikeListener() {
             @Override
@@ -83,6 +90,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.MyView
                 notifyDataSetChanged();
             }
         });
+
 
     }
 
