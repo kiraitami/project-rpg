@@ -32,7 +32,7 @@ Tavern | Visiting Profile |
 
 Download or clone the App
 
-**You can install the RPG-DEMO.apk to test it**
+**You can install the ```RPG-DEMO.apk``` to test it**
 
 Then, enjoy it with your friends!
 
